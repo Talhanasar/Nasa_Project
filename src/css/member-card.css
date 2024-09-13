@@ -1,0 +1,136 @@
+.card {
+  max-width: 20rem;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 2vw;
+}
+
+.card-image {
+  height: 19rem;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 1.2rem;
+}
+
+.card-role {
+  color: #888;
+  font-size: 0.5em;
+  margin-top: 10px;
+}
+.card-name {
+  color: #333;
+  font-size: 0.8em;
+  margin: 10px 0;
+}
+
+.card-description {
+  color: #666;
+  font-size: 0.55em;
+  line-height: 1.6;
+}
+.skills{
+ margin-top: 1.2rem; 
+}
+h3{
+  font-size: 0.5em;
+}
+.skills ul{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  li{
+    padding: 0.3rem 0.8rem;
+    background-color: rgba(69, 181, 92, 0.774);
+    font-size: 0.5em;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 500;
+    cursor: auto;
+  }
+}
+
+.follow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-top: 0.8rem;
+}
+.links{
+  display: flex;
+  gap: 1.5rem;
+}
+
+.insta,
+.fb,
+.linkedin {
+  border: 1px solid black;
+  border-radius: 50%;
+  color: black;
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.insta::before,
+.fb::before,
+.linkedin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  z-index: -1;
+  transition: width 0.5s ease;
+}
+.insta::before{
+  background: linear-gradient(
+    to right,
+    #833ab4,#fd1d1d,#fcb045
+  );
+}
+
+.insta:hover::before {
+  width: 100%;
+}
+
+.insta:hover {
+  color: white;
+}
+
+.fb::before {
+  background-color: rgb(5, 116, 231);
+}
+
+.fb:hover::before {
+  width: 100%;
+}
+
+.fb:hover {
+  color: white;
+}
+
+.linkedin::before {
+  background-color: rgb(10, 102, 194);
+}
+
+.linkedin:hover::before {
+  width: 100%;
+}
+
+.linkedin:hover {
+  color: white;
+}
