@@ -98,7 +98,7 @@ h3{
 }
 .insta::before{
   background: linear-gradient(
-    to right,
+    to bottom right,
     #833ab4,#fd1d1d,#fcb045
   );
 }
