@@ -1,8 +1,9 @@
 import React from 'react'
 import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import "../../css/member-card.css"
+import { BiLogoGmail } from 'react-icons/bi';
 
-const MemberCard = ({ info, img, linkedin, fb, insta, skills }) => {
+const MemberCard = ({ info, img, linkedin, gmail, skills }) => {
     return (
         <div className="card">
             <img src={`/assets/${img}`} alt="Profile Image" className="card-image" />
@@ -20,24 +21,14 @@ const MemberCard = ({ info, img, linkedin, fb, insta, skills }) => {
             <div className="follow">
                 <h3>Social Media:</h3>
                 <div className="links">
-                    {insta &&
+                    {gmail &&
                         <a
-                            href={insta}
+                            href={gmail}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="insta"
+                            className="gmail"
                         >
-                            <FaInstagram size={24} /> {/* React icon with size */}
-                        </a>
-                    }
-                    {fb &&
-                        <a
-                            href={fb}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="fb"
-                        >
-                            <FaFacebookF size={24} /> {/* React icon with size */}
+                            <BiLogoGmail size={24} /> {/* React icon with size */}
                         </a>
                     }
                     {linkedin &&

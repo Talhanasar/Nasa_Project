@@ -66,8 +66,7 @@ h3{
   gap: 1.5rem;
 }
 
-.insta,
-.fb,
+.gmail,
 .linkedin {
   border: 1px solid black;
   border-radius: 50%;
@@ -84,8 +83,7 @@ h3{
   z-index: 0;
 }
 
-.insta::before,
-.fb::before,
+.gmail::before,
 .linkedin::before {
   content: '';
   position: absolute;
@@ -96,31 +94,16 @@ h3{
   z-index: -1;
   transition: width 0.5s ease;
 }
-.insta::before{
-  background: linear-gradient(
-    to bottom right,
-    #833ab4,#fd1d1d,#fcb045
-  );
+.gmail::before{
+  background-color: #ebeded;
 }
 
-.insta:hover::before {
+.gmail:hover::before {
   width: 100%;
 }
 
-.insta:hover {
-  color: white;
-}
-
-.fb::before {
-  background-color: rgb(5, 116, 231);
-}
-
-.fb:hover::before {
-  width: 100%;
-}
-
-.fb:hover {
-  color: white;
+.gmail:hover {
+  color: rgb(215, 25, 25);
 }
 
 .linkedin::before {

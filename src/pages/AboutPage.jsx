@@ -35,17 +35,19 @@ const AboutPage = () => {
             skills={["Video Editor", "Content Creator"]}
             img={"abhilash.jpg"}
             linkedin={"https://www.linkedin.com/in/hassanmehedi/"}
+            gmail={""}
           />
           <MemberCard info={{ name: "Md.Mehedi Hasan", role: "Member" }}
             skills={["Web Devloper", "Frontend Devloper"]}
             img={"mehedi.jpg"}
             linkedin={"https://www.linkedin.com/in/hassanmehedi/"}
+            gmail={"mailto:mdhassan20.bd@gmail.com"}
           />
           <MemberCard info={{ name: "Talha", role: "Member" }}
             skills={["MERN Devloper"]}
             img={"talha.jpg"}
             linkedin={"https://www.linkedin.com/in/talha-7642a1264/"}
-            insta={"https://www.instagram.com/talhabinnasar/"}
+            gmail={"mailto:talhabinnasar7@gmail.com"}
           />
         </ul>
       </div>
