@@ -37,7 +37,7 @@ const AboutPage = () => {
             linkedin={"https://www.linkedin.com/in/hassanmehedi/"}
           />
           <MemberCard info={{ name: "Md.Mehedi Hasan", role: "Member" }}
-            skills={["Web Devloper", "Web Designer"]}
+            skills={["Web Devloper", "Frontend Devloper"]}
             img={"mehedi.jpg"}
             linkedin={"https://www.linkedin.com/in/hassanmehedi/"}
           />

@@ -122,7 +122,7 @@ ul li a.active {
     padding: 0.5rem;
 }
 
-.navbar ul li .dropdown-menu li a {
+.navbar ul li .dropdown-menu li{
     color: white;
     font-size: 1.2em;
     display: block;

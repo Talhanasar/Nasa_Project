@@ -1,10 +1,28 @@
 import React, { useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import '../../css/header.css';
 
 const Header = ({ isScrolled, isLandingPage }) => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleScroll = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const handleLinkClick = (id) => {
+        if (isLandingPage) {
+            // If on the landing page, scroll to the section
+            handleScroll(id);
+        } else {
+            // Navigate to landing page and pass the section id as state
+            navigate("/", { state: { scrollTo: id } });
+        }
+    };
 
     return (
         <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isLandingPage ? '' : 'default'}`}>
@@ -34,20 +52,14 @@ const Header = ({ isScrolled, isLandingPage }) => {
                     />
                     {isDropdownOpen && (
                         <ul className="dropdown-menu">
-                            <li>
-                                <NavLink to="/events/conference">
-                                    Conference
-                                </NavLink>
+                            <li onClick={() => handleLinkClick('page2')} >
+                                Conference
                             </li>
-                            <li>
-                                <NavLink to="/events/webinar">
-                                    Webinar
-                                </NavLink>
+                            <li onClick={() => handleLinkClick('page3')}>
+                                Webinar
                             </li>
-                            <li>
-                                <NavLink to="/events/workshop">
-                                    Workshop
-                                </NavLink>
+                            <li onClick={() => handleLinkClick('page3')}>
+                                Workshop
                             </li>
                         </ul>
                     )}

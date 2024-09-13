@@ -7,10 +7,13 @@
     font-size: 2vw;
 }
 
-.page2,
-.page3 {
+.page2 {
     height: 100vh;
-    background-color: #030712;
+    background-color: #515255;
+}
+.page3{
+    height: 100vh;
+    background-color: aquamarine;
 }
 
 .page1 video {
