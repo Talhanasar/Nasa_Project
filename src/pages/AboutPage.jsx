@@ -34,7 +34,7 @@ const AboutPage = () => {
           <MemberCard info={{ name: "Abhilash chowdhury", role: "Leader" }}
             skills={["Video Editor", "Content Creator"]}
             img={"abhilash.jpg"}
-            linkedin={"https://www.linkedin.com/in/hassanmehedi/"}
+            linkedin={"https://www.linkedin.com/in/abhilash-chowdhury/"}
             gmail={""}
           />
           <MemberCard info={{ name: "Md.Mehedi Hasan", role: "Member" }}
