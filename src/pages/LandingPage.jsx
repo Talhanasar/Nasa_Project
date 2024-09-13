@@ -44,6 +44,7 @@ const LandingPage = () => {
             </div>
             <div id='page2' className="page2"></div>
             <div id='page3' className="page3"></div>
+            <div id='page4' className="page4"></div>
         </>
     )
 }

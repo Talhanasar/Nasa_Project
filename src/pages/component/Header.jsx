@@ -58,7 +58,7 @@ const Header = ({ isScrolled, isLandingPage }) => {
                             <li onClick={() => handleLinkClick('page3')}>
                                 Webinar
                             </li>
-                            <li onClick={() => handleLinkClick('page3')}>
+                            <li onClick={() => handleLinkClick('page4')}>
                                 Workshop
                             </li>
                         </ul>
