@@ -1,4 +1,4 @@
-import Header from './component/header'
+import Header from './component/Header'
 import MemberCard from './component/MemberCard'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import "../css/landing.css"
-import Header from './component/header'
+import Header from './component/Header'
 import { useLocation } from 'react-router-dom';
+import "../css/landing.css"
 
 const LandingPage = () => {
     const [isScrolled, setIsScrolled] = useState(false);
