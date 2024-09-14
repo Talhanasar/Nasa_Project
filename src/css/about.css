@@ -25,3 +25,13 @@
     gap: 2rem;
     flex-wrap: wrap;
 }
+
+/* for smart phones width below 440px */
+@media(width<440px){
+    .page{
+        font-size: 2.8vh;
+    }
+    .top{
+        margin-top: 4.5rem;
+    }
+}

@@ -1,5 +1,5 @@
-import Header from './component/Header'
-import MemberCard from './component/MemberCard'
+import Header from '../component/Header'
+import MemberCard from '../component/MemberCard'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -9,22 +9,25 @@ const AboutPage = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.from(".members .card", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.3,
-      scrollTrigger: {
-        trigger: ".card",
-        scroller: "body",
-        start:"top 50%",
-      }
-    });
+    const allCards = document.querySelectorAll('.card');
+    allCards.forEach((card) => {
+      gsap.from(card , {
+        opacity: 0,
+        y: 80,
+        duration: 1,
+        stagger: 0.3,
+        scrollTrigger: {
+          trigger: card,
+          scroller: "body",
+          start: "top 75%",
+          toggleActions: "play none none none",
+        }
+      });
+    })
   }, [])
 
   return (
     <>
-      <Header />
       <div className='page'>
         <div className="top">
           <h1>Our Team</h1>

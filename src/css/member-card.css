@@ -20,6 +20,7 @@
   font-size: 0.5em;
   margin-top: 10px;
 }
+
 .card-name {
   color: #333;
   font-size: 0.8em;
@@ -31,20 +32,24 @@
   font-size: 0.55em;
   line-height: 1.6;
 }
-.skills{
- margin-top: 1.2rem; 
+
+.skills {
+  margin-top: 1.2rem;
 }
-h3{
+
+h3 {
   font-size: 0.5em;
 }
-.skills ul{
+
+.skills ul {
   display: flex;
   align-items: center;
   justify-content: start;
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 0.5rem;
-  li{
+
+  li {
     padding: 0.3rem 0.8rem;
     background-color: rgba(69, 181, 92, 0.774);
     font-size: 0.5em;
@@ -61,7 +66,8 @@ h3{
   gap: 0.9rem;
   margin-top: 0.8rem;
 }
-.links{
+
+.links {
   display: flex;
   gap: 1.5rem;
 }
@@ -94,7 +100,8 @@ h3{
   z-index: -1;
   transition: width 0.5s ease;
 }
-.gmail::before{
+
+.gmail::before {
   background-color: #ebeded;
 }
 
@@ -116,4 +123,26 @@ h3{
 
 .linkedin:hover {
   color: white;
+}
+
+/* Design for smart phones width below 640px */
+@media(width< 640px) {
+
+  .gmail::before,
+  .linkedin::before {
+    width: 100%;
+  }
+  .gmail {
+    color: rgb(215, 25, 25);
+  }
+  .linkedin {
+    color: white;
+  }
+
+  @media(width<440px){
+    .card{
+      font-size: 2.7vh;
+    }
+  }
+  
 }

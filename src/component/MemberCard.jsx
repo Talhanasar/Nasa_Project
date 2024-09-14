@@ -1,12 +1,12 @@
 import React from 'react'
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
-import "../../css/member-card.css"
+import { FaLinkedinIn } from 'react-icons/fa';
+import "../css/member-card.css"
 import { BiLogoGmail } from 'react-icons/bi';
 
 const MemberCard = ({ info, img, linkedin, gmail, skills }) => {
     return (
         <div className="card">
-            <img src={`/assets/${img}`} alt="Profile Image" className="card-image" />
+            <img src={`/images/${img}`} alt="Profile Image" className="card-image" />
             <p className="card-role">{info.role}</p>
             <h3 className="card-name">{info.name}</h3>
             <p className="card-description">Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavrid from dolor amet iquam lorem bibendum</p>
