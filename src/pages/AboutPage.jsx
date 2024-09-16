@@ -1,8 +1,8 @@
 import Header from '../component/Header'
 import MemberCard from '../component/MemberCard'
-import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import { useGSAP } from '@gsap/react'
 import "../css/about.css"
 
 const AboutPage = () => {

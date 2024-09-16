@@ -3,6 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import "../css/landing.css";
+import { useGSAP } from '@gsap/react';
 
 const LandingPage = () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -29,7 +30,8 @@ const LandingPage = () => {
         setIsVideoLoading(false); // Hide the loader once the video is ready
     };
 
-    useEffect(() => {
+    
+    useGSAP(() => {
         const sections = document.querySelectorAll('.section');
         
         sections.forEach((section) => {
@@ -71,10 +73,6 @@ const LandingPage = () => {
         });
 
         ScrollTrigger.refresh();
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill()); // Clean up triggers
-        };
     }, []);
     
 
