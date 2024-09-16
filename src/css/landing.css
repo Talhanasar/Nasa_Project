@@ -1,26 +1,34 @@
-.page1 {
+.section1 {
     height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(#434141,rgb(154, 151, 151));
     color: white;
+    z-index: -1;
     font-size: 2vw;
 }
 
-.page2 {
+.section2 {
     height: 100vh;
-    background-color: #515255;
+    background: url("/images/section2.png") no-repeat;
+    background-size: cover; 
+    background-position: center;
 }
-.page3{
+.section3{
     height: 100vh;
-    background-color: aquamarine;
+    background: url("/images/section3.png") no-repeat;
+    background-size: cover; 
+    background-position: center;
 }
-.page4{
+.section4{
     height: 100vh;
-    background-color: rgb(43, 70, 61);
+    background: url("/images/section4.png") no-repeat;
+    background-size: cover; 
+    background-position: center;
 }
 
-.page1 video {
+.section1 video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -31,9 +39,102 @@
     z-index: -1;
 }
 
+/* loader css  */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 45px;
+    aspect-ratio: .75;
+    --c: no-repeat linear-gradient(#434141 0 0);
+    background: 
+      var(--c) 0%   50%,
+      var(--c) 50%  50%,
+      var(--c) 100% 50%;
+    animation: l7 1s infinite linear alternate;
+  }
+  @keyframes l7 {
+    0%  {background-size: 20% 50% ,20% 50% ,20% 50% }
+    20% {background-size: 20% 20% ,20% 50% ,20% 50% }
+    40% {background-size: 20% 100%,20% 20% ,20% 50% }
+    60% {background-size: 20% 50% ,20% 100%,20% 20% }
+    80% {background-size: 20% 50% ,20% 50% ,20% 100%}
+    100%{background-size: 20% 50% ,20% 50% ,20% 50% }
+  }
+
+  /* design for text inside sections */
+  .section{
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 0 2.5rem;
+    font-size: 2vw;
+    overflow: hidden;
+  }
+  .section h1 {
+    font-size: 3em; /* Responsive heading */
+    margin-bottom: 1.2rem;
+    font-family: "Viga";
+    overflow: hidden;
+  }
+  .section h1 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translate(0px,60px);
+} 
+  .section p {
+    font-size: 0.6em;
+    max-width: 31.3rem; /* Limit width for better readability */
+    padding: 0.5rem 0.2rem;
+    line-height: 1.5;
+    font-family: "Roboto";
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transform: translate(0px,50px);
+  }
+  
+  .read-more-btn{
+    margin-top: 1.3rem;
+    width: 10rem;
+    opacity: 0;
+    transform: translate(-100px,0px);
+  }
+  .read-more-btn a {
+    color: white;
+    cursor: pointer;
+    font-family: "Roboto";
+    font-size: 0.4em;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+  }
+  .read-more-btn:hover a{
+    color: aqua;
+  }
+
 /* Responsive for mobile devices below 440px  */
 @media(width<440px){
-    .page1{
-        height: 50vh;
+    .section1,.section{
+        height: 55vh;
     }
+    .section{
+      font-size: 2vh;
+      h1{
+        font-size: 2.3em;
+        margin-bottom: 0.5rem;
+      }
+      p{
+        font-size: 0.8;
+      }
+      .read-more-btn{
+        margin-top: 0.5rem;
+        a{
+          font-size: 0.6em;
+        }
+      }
+    }
+
 }

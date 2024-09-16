@@ -2,8 +2,9 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     height: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem 0.4rem;
     font-size: 3vw;
 }
 .top{
@@ -24,6 +25,7 @@
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+    max-width: 65rem;
 }
 
 /* for smart phones width below 440px */
@@ -33,5 +35,9 @@
     }
     .top{
         margin-top: 4.5rem;
+    }
+    .members{
+        margin: 2rem 0.3rem;
+        gap: 0.9rem;
     }
 }

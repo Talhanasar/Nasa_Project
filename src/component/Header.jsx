@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useLenis } from 'lenis/react';
 import '../css/header.css';
 
 const Header = ({ isLandingPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const lenis = useLenis();
 
   // Handle scroll to toggle the scrolled state
   useEffect(() => {
@@ -43,15 +46,21 @@ const Header = ({ isLandingPage }) => {
     }
   };
 
+  const handleScrollOnClick = (path)=>{
+    if(path === location.pathname){
+      lenis.scrollTo(0, { duration: 0 });
+    }
+  }
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isLandingPage ? '' : 'default'}`}>
-      <div className="name">The Zenith</div>
+      {/* <div className="name">The Zenith</div> */}
       <div className="logo">
         <img src="/images/logo.png" alt="Logo" />
       </div>
-      <HamburgerMenu handleLinkClick={handleLinkClick} />
+      <HamburgerMenu handleLinkClick={handleLinkClick} handleScrollOnClick={handleScrollOnClick} />
       <ul className="pc-menu">
-        <li>
+        <li onClick={()=>handleScrollOnClick('/')}>
           <NavLink to="/">Home</NavLink>
         </li>
         <li
@@ -74,7 +83,7 @@ const Header = ({ isLandingPage }) => {
             </ul>
           )}
         </li>
-        <li>
+        <li onClick={()=>handleScrollOnClick('/about')}>
           <NavLink to="/about">About Us</NavLink>
         </li>
       </ul>
@@ -84,7 +93,7 @@ const Header = ({ isLandingPage }) => {
 
 export default Header;
 
-const HamburgerMenu = ({ handleLinkClick }) => {
+const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 
@@ -102,7 +111,7 @@ const HamburgerMenu = ({ handleLinkClick }) => {
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </div>
       <ul className={`hamburger-nav-links ${isMenuOpen ? 'open' : ''}`}>
-        <li onClick={toggleMenu}>
+        <li onClick={()=>{toggleMenu(); handleScrollOnClick('/')}}>
           <NavLink to="/">Home</NavLink>
         </li>
         <li className="dropdown" onClick={toggleDropdown}>
@@ -123,7 +132,7 @@ const HamburgerMenu = ({ handleLinkClick }) => {
             </ul>
           )}
         </li>
-        <li onClick={()=>{toggleMenu()}}>
+        <li onClick={()=>{toggleMenu(); handleScrollOnClick('/about')}}>
           <NavLink to="/about">About Us</NavLink>
         </li>
       </ul>
