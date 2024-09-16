@@ -50,6 +50,9 @@ const Header = ({ isLandingPage }) => {
     if(path === location.pathname){
       lenis.scrollTo(0, { duration: 0 });
     }
+    else{
+      navigate(path);
+    }
   }
 
   return (
