@@ -13,9 +13,9 @@ const LandingPage = () => {
 
     const wrapTextInSpans = (text) => {
         return text.split('').map((char, index) => (
-            <span key={index}>{char === ' '? '\u00A0':char}</span>
+            <span key={index}>{char === ' ' ? '\u00A0' : char}</span>
         ));
-    };    
+    };
 
     useEffect(() => {
         if (location.state && location.state.scrollTo) {
@@ -28,53 +28,53 @@ const LandingPage = () => {
 
     const handleVideoLoaded = () => {
         setIsVideoLoading(false); // Hide the loader once the video is ready
+        ScrollTrigger.refresh();
     };
 
-    
-    useGSAP(() => {
-        const sections = document.querySelectorAll('.section');
-        
-        sections.forEach((section) => {
-            let timeout;
-            const spans = section.querySelectorAll("h1 span");
-            const para = section.querySelector("p");
-            const btn = section.querySelector(".read-more-btn");
-    
-            timeout = setTimeout(() => {
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            const sections = document.querySelectorAll('.section');
+
+            sections.forEach((section) => {
+                const spans = section.querySelectorAll("h1 span");
+                const para = section.querySelector("p");
+                const btn = section.querySelector(".read-more-btn");
+
                 const tl = gsap.timeline({
-                    scrollTrigger:{
-                        trigger:section,
+                    scrollTrigger: {
+                        trigger: section,
                         scroller: 'body',
                         start: "top 65%"
                     }
                 });
-                
-                tl.to(spans, {
-                    opacity: 1,
-                    y: 0,
+
+                tl.from(spans, {
+                    opacity: 0,
+                    y: 60,
                     duration: 1.2,
                     stagger: 0.07
                 });
-                tl.to(para, {
-                    opacity: 1,
-                    y: 0,
+                tl.from(para, {
+                    opacity: 0,
+                    y: 50,
                     duration: 1,
-                },'-=0.8')  // Adjusted overlap timing
-                tl.to(btn, {
-                    opacity: 1,
-                    x: 0,
+                }, '-=0.8')  // Adjusted overlap timing
+                tl.from(btn, {
+                    opacity: 0,
+                    x: -100,
                     duration: 1,
-                },'-=0.8');  // Adjusted overlap timing
-            }, 400);
+                }, '-=0.8');  // Adjusted overlap timing
+            });
 
-            return ()=>{
-                clearTimeout(timeout);
-            }
-        });
-
+        }, 500);
+        
         ScrollTrigger.refresh();
+        return () => {
+            clearTimeout(timeout);
+        }
     }, []);
-    
+
 
     return (
         <>

@@ -1,4 +1,3 @@
-import Header from '../component/Header'
 import MemberCard from '../component/MemberCard'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -9,21 +8,21 @@ const AboutPage = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    const allCards = document.querySelectorAll('.card');
-    allCards.forEach((card) => {
-      gsap.from(card , {
-        opacity: 0,
-        y: 80,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: card,
-          scroller: "body",
-          start: "top 75%",
-          toggleActions: "play none none none",
-        }
+      const allCards = document.querySelectorAll('.card');
+      allCards.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 80,
+          duration: 1,
+          stagger: 0.3,
+          scrollTrigger: {
+            trigger: card,
+            scroller: "body",
+            start: "top 75%",
+            toggleActions: "play none none none",
+          }
+        });
       });
-    })
   }, [])
 
   return (
