@@ -8,7 +8,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (lenis) {
-      lenis.scrollTo(0, { duration: 0 }); // Scroll to the top with no duration for instant scroll
+      lenis.scrollTo(0, { offset: -100 }); // Scroll to the top with no duration for instant scroll
     }
   }, [pathname, lenis]);
 

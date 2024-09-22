@@ -34,7 +34,7 @@ const Header = ({ isLandingPage }) => {
   const handleScrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      lenis.scrollTo(element);
     }
   };
 
@@ -89,6 +89,9 @@ const Header = ({ isLandingPage }) => {
         <li onClick={()=>handleScrollOnClick('/about')}>
           <NavLink to="/about">About Us</NavLink>
         </li>
+        <li onClick={()=>handleScrollOnClick('/playground')}>
+          <NavLink to="/playground">Play Ground</NavLink>
+        </li>
       </ul>
     </nav>
   );
@@ -137,6 +140,9 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
         </li>
         <li onClick={()=>{toggleMenu(); handleScrollOnClick('/about')}}>
           <NavLink to="/about">About Us</NavLink>
+        </li>
+        <li onClick={()=>{toggleMenu(); handleScrollOnClick('/playground')}}>
+          <NavLink to="/playground">Play Ground</NavLink>
         </li>
       </ul>
     </div>

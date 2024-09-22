@@ -13,6 +13,9 @@
     font-size: 2vw;
     z-index: 2;
 }
+.navbar li{
+    font-family: "Roboto", sans-serif;
+}
 
 .name {
     font-size: 1.4em;
@@ -21,7 +24,7 @@
 .logo {
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 2rem;
     transform: translate(0, -50%);
 }
 
@@ -36,7 +39,7 @@
     justify-content: center;
     align-items: center;
     gap: 1.7rem;
-    font-size: 0.8em;
+    font-size: 0.7em;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -115,18 +118,22 @@
     display: none;
     flex-direction: column;
     gap: 1rem;
-    padding: 1rem;
+    padding: 1rem 0;
     border-radius: 0.5rem;
 }
 
 .navbar .pc-menu li .dropdown-menu li {
-    padding: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    color: white;
+    font-size: 1em;
+    display: block;
+    width: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar .pc-menu li .dropdown-menu li{
-    color: white;
-    font-size: 1.2em;
-    display: block;
+.navbar .pc-menu li .dropdown-menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: aqua;
 }
 
 /* Show the dropdown on hover */
@@ -163,13 +170,15 @@
 
 .hamburger-nav-links li {
     list-style: none;
-    padding: 0.6rem 1.2rem;
+    padding: 0.8rem 1.2rem;
     text-align: center;
     border-bottom: 1px solid #ddd;
+    font-size: 1em;
 }
 .hamburger-nav-links li:last-child {
+
     border-bottom: none;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .hamburger-nav-links li a {
@@ -187,7 +196,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.63rem 1.3rem;
 }
 
 .dropdown-menu {

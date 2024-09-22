@@ -3,6 +3,7 @@ import ErrorPage from './pages/ErrorPage'
 import LandingPage from './pages/LandingPage'
 import AboutPage from './pages/AboutPage'
 import AppLayout from './AppLayout'
+import Playground from './pages/Playground'
 
 function App() {
 
@@ -19,6 +20,10 @@ function App() {
         {
           path: "/about",
           element: <AboutPage />,
+        },
+        {
+          path: "/playground",
+          element: <Playground />,
         },
       ])
     },

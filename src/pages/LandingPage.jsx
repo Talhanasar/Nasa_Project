@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useOutletContext } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import { useLenis } from 'lenis/react';
 import "../css/landing.css";
 import { useGSAP } from '@gsap/react';
 
+
 const LandingPage = () => {
     gsap.registerPlugin(ScrollTrigger);
-
     const location = useLocation();
     const [isVideoLoading, setIsVideoLoading] = useState(true);
+    const lenis = useLenis();
 
     const wrapTextInSpans = (text) => {
         return text.split('').map((char, index) => (
@@ -17,14 +19,19 @@ const LandingPage = () => {
         ));
     };
 
+
     useEffect(() => {
         if (location.state && location.state.scrollTo) {
             const element = document.getElementById(location.state.scrollTo);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                setTimeout(() => {
+                    lenis.scrollTo(element); // Adjust offset as needed
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                }, 100); // Small delay to ensure DOM is ready
             }
         }
-    }, [location]);
+    }, [location, lenis]);
+
 
     const handleVideoLoaded = () => {
         setIsVideoLoading(false); // Hide the loader once the video is ready
@@ -33,14 +40,14 @@ const LandingPage = () => {
 
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
+        const timer = setTimeout(() => {
             const sections = document.querySelectorAll('.section');
-
+    
             sections.forEach((section) => {
                 const spans = section.querySelectorAll("h1 span");
                 const para = section.querySelector("p");
                 const btn = section.querySelector(".read-more-btn");
-
+    
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: section,
@@ -48,7 +55,7 @@ const LandingPage = () => {
                         start: "top 65%"
                     }
                 });
-
+    
                 tl.from(spans, {
                     opacity: 0,
                     y: 60,
@@ -66,14 +73,11 @@ const LandingPage = () => {
                     duration: 1,
                 }, '-=0.8');  // Adjusted overlap timing
             });
+        },500);
+        return () => clearTimeout(timer);
 
-        }, 500);
-        
-        ScrollTrigger.refresh();
-        return () => {
-            clearTimeout(timeout);
-        }
     }, []);
+
 
 
     return (
