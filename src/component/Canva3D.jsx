@@ -54,8 +54,8 @@ function Scene({name}) {
 
   return (
     <>
-      <directionalLight position={[2, 2, 5]} intensity={1.5} />
-      <ambientLight intensity={0.17} />
+      <directionalLight position={[2, 2, 5]} intensity={name === 'moon'? 1.7 : 1.5} />
+      <ambientLight intensity={name === 'moon'? 0.5 : 0.17 } />
       <Globe name={name} />
     </>
   );
