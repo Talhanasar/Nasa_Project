@@ -11,6 +11,7 @@ const LandingPage = () => {
     gsap.registerPlugin(ScrollTrigger);
     const location = useLocation();
     const [isVideoLoading, setIsVideoLoading] = useState(true);
+    const width = window.innerWidth;
     const lenis = useLenis();
 
     const wrapTextInSpans = (text) => {
@@ -86,7 +87,7 @@ const LandingPage = () => {
                 {isVideoLoading && <div className="loader"></div>}
                 <video loop autoPlay muted
                     onCanPlay={handleVideoLoaded}
-                    src="/video/bg_video.mp4"></video>
+                    src={`/video/${width < 450 ? "Web" : "web1"}.mp4`}></video>
             </section>
 
             <section id='page2' className="section section2">

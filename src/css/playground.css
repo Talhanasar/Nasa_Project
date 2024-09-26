@@ -1,13 +1,33 @@
-.model-3d{
+.solar-system-container{
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: #000;
+    position: relative;
+    font-size: 2vw;
+}
+.solar-system-container .title{
+    position: absolute;
+    left: 2rem;
+    color: transparent;
+    -webkit-text-stroke: 0.2px white;
+    font-weight: 700;
+    font-size: 1.5em;
+    top: 5rem;
+}
+.model-3d{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     position: relative;
     align-items: center;
     overflow: hidden; /* Add this line */
     font-size: 2vw;
+    background-color: #000;
 }
 .model-3d .title{
     position: absolute;
@@ -18,10 +38,8 @@
     font-weight: 700;
     font-size: 1.5em;
 }
-.model-3d .title.first{
-    top: 5rem;
-}
-.model-3d .extra{
+.model-3d .info,
+.solar-system-container .info{
     padding: 2rem;
     background-color: #000;
     color: white;
@@ -29,12 +47,52 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 1rem;
     h1{
         font-size: 1.3em;
     }
     p{
         font-size: 0.7em;
     }
+}
+
+.arrow-buttons{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+.arrow-buttons .arrow-icon{
+    font-size: 2em;
+    color: white;
+    cursor: pointer;
+}
+.info ul{
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    transition: transform 0.5s ease-in-out;
+}
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 90vw;
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-item h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.info-item p {
+    margin: 0;
+    font-size: 0.9em;
 }
 
 
@@ -47,5 +105,9 @@
             left: 1.4rem;
             width: 90%;
         }
+    }
+    .solar-system-container{
+        height: 55vh;
+        font-size: 2vh;
     }
 }
