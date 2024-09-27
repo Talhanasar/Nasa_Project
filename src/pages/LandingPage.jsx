@@ -9,10 +9,8 @@ const LandingPage = () => {
     gsap.registerPlugin(ScrollTrigger);
     const location = useLocation();
     const [isVideoLoading, setIsVideoLoading] = useState(true);
-    const width = window.innerWidth;
     const lenis = useLenis();
     const videoRef = useRef(null);
-    const [isVideoVisible, setIsVideoVisible] = useState(false);
 
     const wrapTextInSpans = (text) => {
         return text.split('').map((char, index) => (
@@ -36,28 +34,6 @@ const LandingPage = () => {
         setIsVideoLoading(false); // Hide the loader once the video is ready
         ScrollTrigger.refresh();
     };
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVideoVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { threshold: 0.1 }
-        );
-
-        if (videoRef.current) {
-            observer.observe(videoRef.current);
-        }
-
-        return () => {
-            if (videoRef.current) {
-                observer.unobserve(videoRef.current);
-            }
-        };
-    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -102,15 +78,13 @@ const LandingPage = () => {
         <>
             <section id='start' className="section1" ref={videoRef}>
                 {isVideoLoading && <div className="loader"></div>}
-                {isVideoVisible && (
-                    <video 
-                        loop 
-                        autoPlay 
-                        muted
-                        onCanPlay={handleVideoLoaded}
-                        src={`/video/${width < 450 ? "Web" : "web1"}.mp4`}
-                    />
-                )}
+                <video 
+                    loop 
+                    autoPlay 
+                    muted
+                    onCanPlay={handleVideoLoaded}
+                    src={`/video/Web.mp4`}
+                />
             </section>
 
             <section id='page2' className="section section2">

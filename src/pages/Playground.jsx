@@ -1,13 +1,38 @@
 import React, { Suspense, useState, useEffect, useCallback, useMemo } from 'react';
+import { useLoader } from '@react-three/fiber';
+import * as THREE from 'three';
 import { celestialObjects } from '../component/CelestialData';
 import SolarSystem from '../component/SolarSystem';
+import Sketch from '../component/Sketch';
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import '../css/playground.css';
+
+const planetNames = ['sun', 'mercury', 'venus', 'earth', 'moon', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune'];
+const cubeTextureLoader = new THREE.CubeTextureLoader();
 
 const Playground = () => {
     const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0);
     const [initialTranslate, setInitialTranslate] = useState(45.5);
     const [showModel, setShowModel] = useState(false);
+
+    const textures = useLoader(THREE.TextureLoader,
+        planetNames.map(name => `/3D_models/${name}.png`)
+    );
+
+    const texturesObject = useMemo(() =>
+        Object.fromEntries(planetNames.map((name, index) => [name, textures[index]]))
+    , [textures]);
+
+    const backgroundCubemap = useMemo(() =>
+        cubeTextureLoader.load([
+            '/textures/nx.png',
+            '/textures/px.png',
+            '/textures/py.png',
+            '/textures/ny.png',
+            '/textures/pz.png',
+            '/textures/nz.png'
+        ])
+    , []);
 
     const handleArrowClick = useCallback((direction) => {
         if (direction === 'left') {
@@ -52,7 +77,7 @@ const Playground = () => {
         <>
             <div className='solar-system-container'>
                 <Suspense fallback={<div>Loading Solar System...</div>}>
-                    <SolarSystem />
+                    <SolarSystem textures={texturesObject} backgroundCubemap={backgroundCubemap} />
                 </Suspense>
                 <h1 className='title'>Solar System</h1>
                 <div className="info">
@@ -63,11 +88,15 @@ const Playground = () => {
             <div className="model-3d">
                 {!showModel ? (
                     <div onClick={() => setShowModel(true)} className="load-model-btn">
-                        Click Me to Load 3D Model
+                        Click to Load 3D Model
                     </div>
                 ) : (
                     <Suspense fallback={<div>Loading Planet...</div>}>
-                        {celestialObjects[currentPlanetIndex].component()}
+                        <Sketch 
+                            name={celestialObjects[currentPlanetIndex].name.toLowerCase()} 
+                            textures={texturesObject} 
+                            backgroundCubemap={backgroundCubemap} 
+                        />
                     </Suspense>
                 )}
                 <h1 className='title'>{celestialObjects[currentPlanetIndex].title}</h1>

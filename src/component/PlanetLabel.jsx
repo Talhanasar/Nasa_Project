@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react'
 import * as THREE from 'three'
-import { useLoader } from '@react-three/fiber'
 
 function PlanetLabel({ name }) {
   const spriteMaterial = useRef()
@@ -21,7 +20,7 @@ function PlanetLabel({ name }) {
   }, [name])
 
   return (
-    <sprite position={[0, 1.5, 0]} scale={[5, 2.5, 1]}>
+    <sprite position={name === 'Sun' ? [1, 1.5, 0] : [0, 1.5, 0]} scale={[5, 2.5, 1]}>
       <spriteMaterial ref={spriteMaterial} transparent opacity={0.8} />
     </sprite>
   )
