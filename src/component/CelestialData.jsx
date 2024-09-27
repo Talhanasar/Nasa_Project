@@ -1,4 +1,4 @@
-import Sketch from './sketch'
+import Sketch from './Sketch'
 import * as THREE from 'three'
 
 export const celestialBodies = {
