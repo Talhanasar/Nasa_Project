@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { NavLink, useLocation, useOutletContext } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useLenis } from 'lenis/react';
 import "../css/landing.css";
-import { useGSAP } from '@gsap/react';
-
 
 const LandingPage = () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -13,13 +11,14 @@ const LandingPage = () => {
     const [isVideoLoading, setIsVideoLoading] = useState(true);
     const width = window.innerWidth;
     const lenis = useLenis();
+    const videoRef = useRef(null);
+    const [isVideoVisible, setIsVideoVisible] = useState(false);
 
     const wrapTextInSpans = (text) => {
         return text.split('').map((char, index) => (
             <span key={index}>{char === ' ' ? '\u00A0' : char}</span>
         ));
     };
-
 
     useEffect(() => {
         if (location.state && location.state.scrollTo) {
@@ -33,22 +32,42 @@ const LandingPage = () => {
         }
     }, [location, lenis]);
 
-
     const handleVideoLoaded = () => {
         setIsVideoLoading(false); // Hide the loader once the video is ready
         ScrollTrigger.refresh();
     };
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVideoVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (videoRef.current) {
+            observer.observe(videoRef.current);
+        }
+
+        return () => {
+            if (videoRef.current) {
+                observer.unobserve(videoRef.current);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         const timer = setTimeout(() => {
             const sections = document.querySelectorAll('.section');
-    
+
             sections.forEach((section) => {
                 const spans = section.querySelectorAll("h1 span");
                 const para = section.querySelector("p");
                 const btn = section.querySelector(".read-more-btn");
-    
+
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: section,
@@ -56,7 +75,7 @@ const LandingPage = () => {
                         start: "top 65%"
                     }
                 });
-    
+
                 tl.from(spans, {
                     opacity: 0,
                     y: 60,
@@ -74,20 +93,24 @@ const LandingPage = () => {
                     duration: 1,
                 }, '-=0.8');  // Adjusted overlap timing
             });
-        },500);
+        }, 500);
         return () => clearTimeout(timer);
 
     }, []);
 
-
-
     return (
         <>
-            <section id='start' className="section1">
+            <section id='start' className="section1" ref={videoRef}>
                 {isVideoLoading && <div className="loader"></div>}
-                <video loop autoPlay muted
-                    onCanPlay={handleVideoLoaded}
-                    src={`/video/${width < 450 ? "Web" : "web1"}.mp4`}></video>
+                {isVideoVisible && (
+                    <video 
+                        loop 
+                        autoPlay 
+                        muted
+                        onCanPlay={handleVideoLoaded}
+                        src={`/video/${width < 450 ? "Web" : "web1"}.mp4`}
+                    />
+                )}
             </section>
 
             <section id='page2' className="section section2">

@@ -1,64 +1,21 @@
 import React, { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber'
-import { OrbitControls, Html } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 import * as THREE from 'three'
 import { createPlanets } from './CelestialData'
 import PlanetLabel from './PlanetLabel'
 
-// Texture loading
-function useLoadTextures() {
-    const [
-        sunTexture,
-        mercuryTexture,
-        venusTexture,
-        earthTexture,
-        marsTexture,
-        jupiterTexture,
-        saturnTexture,
-        uranusTexture,
-        neptuneTexture,
-        moonTexture,
-        saturnRingTexture
-    ] = useLoader(THREE.TextureLoader, [
-        "/3D_models/textures/sun.png",
-        "/3D_models/textures/mercury.png",
-        "/3D_models/textures/venus.png",
-        "/3D_models/textures/earth.png",
-        "/3D_models/textures/mars.png",
-        "/3D_models/textures/jupiter.png",
-        "/3D_models/textures/saturn.png",
-        "/3D_models/textures/uranus.png",
-        "/3D_models/textures/neptune.png",
-        "/3D_models/textures/moon.png",
-        "/3D_models/textures/saturn_ring.png"
-    ])
 
-    return {
-        sunTexture,
-        mercuryTexture,
-        venusTexture,
-        earthTexture,
-        marsTexture,
-        jupiterTexture,
-        saturnTexture,
-        uranusTexture,
-        neptuneTexture,
-        moonTexture,
-        saturnRingTexture
-    }
-}
-
-function Sun() {
-    const { sunTexture } = useLoadTextures()
+const Sun = React.memo(function Sun({ texture }) {
     return (
         <mesh scale={5}>
             <sphereGeometry args={[1, 32, 32]} />
-            <meshBasicMaterial map={sunTexture} />
+            <meshBasicMaterial map={texture} />
         </mesh>
     )
-}
+})
 
-function SaturnRing() {
+const SaturnRing = React.memo(function SaturnRing() {
     const texture = useLoader(THREE.TextureLoader, "/3D_models/textures/saturn_ring.png")
 
     return (
@@ -67,18 +24,53 @@ function SaturnRing() {
             <meshBasicMaterial map={texture} side={THREE.DoubleSide} />
         </mesh>
     )
-}
+})
 
-function OrbitRing({ distance }) {
+const OrbitRing = React.memo(function OrbitRing({ distance }) {
     return (
         <mesh rotation-x={Math.PI / 2}>
             <ringGeometry args={[distance, distance + 0.2, 64]} />
             <meshBasicMaterial color="#FFFFFF" transparent={true} opacity={0.1} side={THREE.DoubleSide} />
         </mesh>
     )
+})
+
+const Moon = React.memo(function Moon({ moon, texture }) {
+    const ref = useRef()
+
+    useFrame((state, delta) => {
+        ref.current.rotation.y += moon.speed
+        ref.current.position.x = Math.sin(ref.current.rotation.y) * moon.distance
+        ref.current.position.z = Math.cos(ref.current.rotation.y) * moon.distance
+    })
+
+    return (
+        <mesh ref={ref} scale={moon.radius}>
+            <sphereGeometry args={[1, 32, 32]} />
+            <meshStandardMaterial map={texture} />
+        </mesh>
+    )
+})
+
+function CubeBackground() {
+    const { scene } = useThree()
+
+    useEffect(() => {
+        const loader = new THREE.CubeTextureLoader();
+        loader.setPath('/textures/');
+        const cubeTexture = loader.load([
+            'px.png', 'nx.png',
+            'py.png', 'ny.png',
+            'pz.png', 'nz.png',
+        ]);
+        scene.background = cubeTexture;
+        scene.environment = cubeTexture;
+    }, [scene]);
+
+    return null
 }
 
-function Planet({ planet }) {
+const Planet = React.memo(function Planet({ planet, textures }) {
     const ref = useRef()
     const groupRef = useRef()
 
@@ -108,51 +100,53 @@ function Planet({ planet }) {
                     <PlanetLabel name={planet.name} />
                 </group>
                 {planet.moons.map((moon, index) => (
-                    <Moon key={index} moon={moon} />
+                    <Moon key={index} moon={moon} texture={textures.moonTexture} />
                 ))}
             </group>
         </>
     )
-}
-
-function Moon({ moon }) {
-    const { moonTexture } = useLoadTextures()
-    const ref = useRef()
-
-    useFrame((state, delta) => {
-        ref.current.rotation.y += moon.speed
-        ref.current.position.x = Math.sin(ref.current.rotation.y) * moon.distance
-        ref.current.position.z = Math.cos(ref.current.rotation.y) * moon.distance
-    })
-
-    return (
-        <mesh ref={ref} scale={moon.radius}>
-            <sphereGeometry args={[1, 32, 32]} />
-            <meshStandardMaterial map={moonTexture} />
-        </mesh>
-    )
-}
-
-function CubeBackground() {
-    const { scene } = useThree()
-
-    useEffect(() => {
-        const loader = new THREE.CubeTextureLoader();
-        loader.setPath('/textures/');
-        const cubeTexture = loader.load([
-            'px.png', 'nx.png',
-            'py.png', 'ny.png',
-            'pz.png', 'nz.png',
-        ]);
-        scene.background = cubeTexture;
-        scene.environment = cubeTexture;
-    }, [scene]);
-
-    return null
-}
+})
 
 export default function SolarSystem() {
-    const textures = useLoadTextures()
+    const [
+        sunTexture,
+        mercuryTexture,
+        venusTexture,
+        earthTexture,
+        marsTexture,
+        jupiterTexture,
+        saturnTexture,
+        uranusTexture,
+        neptuneTexture,
+        moonTexture,
+        saturnRingTexture
+    ] = useLoader(THREE.TextureLoader, [
+        "/3D_models/textures/sun.png",
+        "/3D_models/textures/mercury.png",
+        "/3D_models/textures/venus.png",
+        "/3D_models/textures/earth.png",
+        "/3D_models/textures/mars.png",
+        "/3D_models/textures/jupiter.png",
+        "/3D_models/textures/saturn.png",
+        "/3D_models/textures/uranus.png",
+        "/3D_models/textures/neptune.png",
+        "/3D_models/textures/moon.png",
+        "/3D_models/textures/saturn_ring.png"
+    ])
+
+    const textures = {
+        sunTexture,
+        mercuryTexture,
+        venusTexture,
+        earthTexture,
+        marsTexture,
+        jupiterTexture,
+        saturnTexture,
+        uranusTexture,
+        neptuneTexture,
+        moonTexture,
+        saturnRingTexture
+    }
 
     const planets = useMemo(() => createPlanets(textures), [textures])
 
@@ -161,9 +155,9 @@ export default function SolarSystem() {
             <CubeBackground />
             <ambientLight intensity={0.3} />
             <pointLight position={[0, 0, 0]} intensity={1000} />
-            <Sun />
+            <Sun texture={sunTexture} />
             {planets.map((planet, index) => (
-                <Planet key={index} planet={planet} />
+                <Planet key={index} planet={planet} textures={textures} />
             ))}
             <OrbitControls 
             enableDamping  

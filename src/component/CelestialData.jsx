@@ -1,3 +1,4 @@
+import React from 'react';
 import Sketch from './Sketch'
 import * as THREE from 'three'
 

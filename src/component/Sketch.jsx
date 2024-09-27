@@ -1,10 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import { Canvas, useFrame, useThree, useLoader } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { celestialBodies } from './CelestialData';
 
-function Globe({ name }) {
+const Globe = React.memo(function Globe({ name }) {
   const globeRef = useRef();
   const ringRef = useRef();
   const bodyProperties = celestialBodies[name];
@@ -46,9 +46,9 @@ function Globe({ name }) {
       )}
     </group>
   );
-}
+});
 
-function Scene({ name }) {
+const Scene = React.memo(function Scene({ name }) {
   const { scene } = useThree();
   const bodyProperties = celestialBodies[name];
 
@@ -62,7 +62,7 @@ function Scene({ name }) {
     ]);
     scene.background = cubeTexture;
     scene.environment = cubeTexture;
-  }, [scene]);
+  }, [scene, name]);
 
   return (
     <>
@@ -74,7 +74,7 @@ function Scene({ name }) {
       <Globe name={name} />
     </>
   );
-}
+});
 
 export default function Sketch({ name }) {
   const canvasRef = useRef(null);
@@ -104,19 +104,22 @@ export default function Sketch({ name }) {
     };
   }, []);
 
+  const canvasStyle = useMemo(() => ({ height: '60%' }), []);
+  const orbitControlsProps = useMemo(() => ({
+    enableDamping: true,
+    dampingFactor: 0.05,
+    enableZoom: false
+  }), []);
+
   return (
     <Canvas
       camera={{ position: [0, 0, 5], fov: 75 }}
       gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, outputEncoding: THREE.sRGBEncoding }}
-      style={{ height: '60%' }}
+      style={canvasStyle}
       ref={canvasRef}
     >
       <Scene name={name} />
-      <OrbitControls
-        enableDamping
-        dampingFactor={0.05}
-        enableZoom={false}
-      />
+      <OrbitControls {...orbitControlsProps} />
     </Canvas>
   );
 }
