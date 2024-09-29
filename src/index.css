@@ -9,9 +9,23 @@ body,html{
     height: 100%;
     width: 100%;
 }
+body{
+    overflow-x: hidden;
+}
 li{
     list-style: none;
 }
 a{
     text-decoration: none;
+}
+.suspense-fallback{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

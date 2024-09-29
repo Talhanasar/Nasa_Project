@@ -1,9 +1,9 @@
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useLoader, useThree } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
-import {createPlanets} from './CelestialData';
 import PlanetLabel from './PlanetLabel';
+import { createPlanets } from './CelestialData';
 
 const Sun = ({ texture }) => {
   return (
@@ -34,7 +34,7 @@ const Planet = ({ planet }) => {
       {planet.name === "Saturn" && (
         <mesh rotation={[Math.PI/3, 0, 0]}>
           <ringGeometry args={[1.2, 2, 35]} />
-          <meshBasicMaterial map={useLoader(THREE.TextureLoader, "/3D_models/saturn_ring.png")} side={THREE.DoubleSide} />
+          <meshBasicMaterial map={useLoader(THREE.TextureLoader, "/textures/saturn_ring.jpg")} side={THREE.DoubleSide} />
         </mesh>
       )}
       {planet.moons.map((moon, index) => (
@@ -56,8 +56,7 @@ const Moon = ({ moon }) => {
   return (
     <mesh ref={ref} scale={moon.radius}>
       <sphereGeometry args={[1, 32, 32]} />
-      <meshStandardMaterial map={useLoader(THREE.TextureLoader, "/3D_models/moon.png")} />
-      <PlanetLabel name={moon.name} />
+      <meshStandardMaterial map={useLoader(THREE.TextureLoader, "/textures/moon.jpg")} />
     </mesh>
   );
 };
@@ -72,7 +71,7 @@ const PlanetRing = ({ distance }) => {
   return (
     <mesh ref={ringRef} rotation={[Math.PI / 2, 0, 0]}>
       <ringGeometry args={[distance - 0.15, distance + 0.15, 55]} />
-      <meshBasicMaterial color="#ffffff" side={THREE.DoubleSide} transparent opacity={0.1} />
+      <meshBasicMaterial color="#ffffff" side={THREE.DoubleSide} transparent opacity={0.3} />
     </mesh>
   );
 };
@@ -101,11 +100,48 @@ const Scene = React.memo(({textures, backgroundCubemap}) => {
   );
 });
 
-const SolarSystem = ({textures, backgroundCubemap}) => {
+const SolarSystem = () => {
+  const [textures, setTextures] = useState({});
+  const [backgroundCubemap, setBackgroundCubemap] = useState(null);
+
+  useEffect(() => {
+    const loader = new THREE.TextureLoader();
+    const cubeLoader = new THREE.CubeTextureLoader();
+
+    Promise.all([
+      loader.loadAsync('/textures/sun.jpg'),
+      loader.loadAsync('/textures/mercury.jpg'),
+      loader.loadAsync('/textures/venus.jpg'),
+      loader.loadAsync('/textures/earth.jpg'),
+      loader.loadAsync('/textures/mars.jpg'),
+      loader.loadAsync('/textures/jupiter.jpg'),
+      loader.loadAsync('/textures/saturn.jpg'),
+      loader.loadAsync('/textures/uranus.jpg'),
+      loader.loadAsync('/textures/neptune.jpg'),
+      cubeLoader.loadAsync([
+        '/textures/cubeMap/px.png',
+        '/textures/cubeMap/nx.png',
+        '/textures/cubeMap/py.png',
+        '/textures/cubeMap/ny.png',
+        '/textures/cubeMap/pz.png',
+        '/textures/cubeMap/nz.png'
+      ])
+    ]).then(([sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, cubemap]) => {
+      setTextures({ sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune });
+      setBackgroundCubemap(cubemap);
+    }).catch(error => {
+      console.error("Error loading textures:", error);
+    });
+  }, []);
+
+  if (!textures.sun || !backgroundCubemap) {
+    return <div className='suspense-fallback'>Loading...</div>;
+  }
+
   return (
-    <Canvas camera={{ position: [0, 30, 80], fov: 45 }}>
+    <Canvas camera={{ position: [0, 25, 230], fov: 45 }} className='solar-system-canvas'>
       <Scene textures={textures} backgroundCubemap={backgroundCubemap} />
-      <OrbitControls enableDamping maxDistance={100} minDistance={20} />
+      <OrbitControls enableDamping maxDistance={140} minDistance={20} enablePan={false} />
     </Canvas>
   );
 };

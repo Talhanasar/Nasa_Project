@@ -19,20 +19,40 @@ const LandingPage = () => {
     };
 
     useEffect(() => {
+        // Reset scroll position when component mounts
+        window.scrollTo(0, 0);
+
+        // Safely call lenis.resize() if lenis is available
+        if (lenis && typeof lenis.resize === 'function') {
+            lenis.resize();
+        }
+
         if (location.state && location.state.scrollTo) {
             const element = document.getElementById(location.state.scrollTo);
             if (element) {
                 setTimeout(() => {
-                    lenis.scrollTo(element); // Adjust offset as needed
+                    if (lenis && typeof lenis.scrollTo === 'function') {
+                        lenis.scrollTo(element);
+                    } else {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
                     window.history.replaceState({}, document.title, window.location.pathname);
-                }, 100); // Small delay to ensure DOM is ready
+                }, 100);
             }
         }
+
+        return () => {
+            // Clean up ScrollTrigger instances when component unmounts
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
     }, [location, lenis]);
 
     const handleVideoLoaded = () => {
-        setIsVideoLoading(false); // Hide the loader once the video is ready
+        setIsVideoLoading(false);
         ScrollTrigger.refresh();
+        if (lenis && typeof lenis.resize === 'function') {
+            lenis.resize();
+        }
     };
 
     useEffect(() => {
@@ -47,7 +67,6 @@ const LandingPage = () => {
                 const tl = gsap.timeline({
                     scrollTrigger: {
                         trigger: section,
-                        scroller: 'body',
                         start: "top 65%"
                     }
                 });

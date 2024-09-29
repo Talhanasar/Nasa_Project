@@ -8,7 +8,7 @@ const Globe = React.memo(function Globe({ name, textures }) {
   const globeRef = useRef();
   const texture = textures[name.toLowerCase()];
 
-  const ringTexture = name === 'saturn' ? useLoader(THREE.TextureLoader, `3D_models/saturn_ring.png`) : null;
+  const ringTexture = name === 'saturn' ? useLoader(THREE.TextureLoader, `/textures/saturn_ring.jpg`) : null;
 
   useFrame((state, delta) => {
     if (globeRef.current) {
@@ -65,7 +65,8 @@ const Sketch = ({ name, textures, backgroundCubemap }) => {
   return (
     <Canvas camera={{ position: [0, 0, 3], fov: 75 }}>
       <Scene name={name} textures={textures} backgroundCubemap={backgroundCubemap} />
-      <OrbitControls enableDamping dampingFactor={0.05} enableZoom={false} />
+      <OrbitControls enableDamping dampingFactor={0.05} enableZoom={false}
+      enablePan={false} />
     </Canvas>
   );
 };

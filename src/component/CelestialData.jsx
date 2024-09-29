@@ -13,7 +13,7 @@ export const celestialBodies = {
       roughness: 0.7,
       position: [0, -0.7, 0],
       directionalLightIntensity: 1.8,
-      ambientLightIntensity: 0.3
+      ambientLightIntensity: 0.45
     },
     venus: {
       scale: 1.7,
@@ -21,7 +21,7 @@ export const celestialBodies = {
       roughness: 0.6,
       position: [0, -0.7, 0],
       directionalLightIntensity: 1.7,
-      ambientLightIntensity: 0.15
+      ambientLightIntensity: 0.3
     },
     earth: {
       scale: 1.5,
@@ -45,7 +45,7 @@ export const celestialBodies = {
       roughness: 0.7,
       position: [0, -0.7, 0],
       directionalLightIntensity: 1.5,
-      ambientLightIntensity: 0.23
+      ambientLightIntensity: 0.3
     },
     jupiter: {
       scale: 1.5,
@@ -69,7 +69,7 @@ export const celestialBodies = {
       roughness: 0.7,
       position: [0, -0.7, 0],
       directionalLightIntensity: 1.1,
-      ambientLightIntensity: 0.12
+      ambientLightIntensity: 0.25
     },
     neptune: {
       scale: 2,
@@ -138,7 +138,7 @@ export const createPlanets = (textures) => [
   {
     name: "Mercury",
     radius: 0.38,
-    distance: 5.8,
+    distance: 10,
     speed: 0.01,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.mercury
@@ -148,7 +148,7 @@ export const createPlanets = (textures) => [
   {
     name: "Venus",
     radius: 0.95,
-    distance: 10.87,
+    distance: 15,
     speed: 0.007,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.venus
@@ -158,7 +158,7 @@ export const createPlanets = (textures) => [
   {
     name: "Earth",
     radius: 1,
-    distance: 15,
+    distance: 20,
     speed: 0.005,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.earth
@@ -175,7 +175,7 @@ export const createPlanets = (textures) => [
   {
     name: "Mars",
     radius: 0.53,
-    distance: 22.8,
+    distance: 30,
     speed: 0.003,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.mars
@@ -198,136 +198,42 @@ export const createPlanets = (textures) => [
   {
     name: "Jupiter",
     radius: 1.12,
-    distance: 30,
+    distance: 45,
     speed: 0.001,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.jupiter
     }),
-    moons: [
-      {
-        name: "Io",
-        radius: 0.15,
-        distance: 2,
-        speed: 0.01,
-      },
-      {
-        name: "Europa",
-        radius: 0.13,
-        distance: 2.5,
-        speed: 0.008,
-      },
-      {
-        name: "Ganymede",
-        radius: 0.2,
-        distance: 3,
-        speed: 0.006,
-      },
-      {
-        name: "Callisto",
-        radius: 0.18,
-        distance: 3.5,
-        speed: 0.004,
-      },
-    ],
+    moons: [],
   },
   {
     name: "Saturn",
     radius: 0.945,
-    distance: 40,
+    distance: 60,
     speed: 0.0008,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.saturn
     }),
     hasRing: true,
-    moons: [
-      {
-        name: "Titan",
-        radius: 0.2,
-        distance: 3,
-        speed: 0.005,
-      },
-      {
-        name: "Rhea",
-        radius: 0.1,
-        distance: 2.5,
-        speed: 0.007,
-      },
-      {
-        name: "Iapetus",
-        radius: 0.08,
-        distance: 3.5,
-        speed: 0.003,
-      },
-    ],
+    moons: [],
   },
   {
     name: "Uranus",
     radius: 0.4,
-    distance: 50,
+    distance: 75,
     speed: 0.0005,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.uranus
     }),
-    moons: [
-      {
-        name: "Miranda",
-        radius: 0.05,
-        distance: 1.5,
-        speed: 0.01,
-      },
-      {
-        name: "Ariel",
-        radius: 0.07,
-        distance: 2,
-        speed: 0.008,
-      },
-      {
-        name: "Umbriel",
-        radius: 0.06,
-        distance: 2.5,
-        speed: 0.006,
-      },
-      {
-        name: "Titania",
-        radius: 0.09,
-        distance: 3,
-        speed: 0.004,
-      },
-      {
-        name: "Oberon",
-        radius: 0.08,
-        distance: 3.5,
-        speed: 0.003,
-      },
-    ],
+    moons: [],
   },
   {
     name: "Neptune",
     radius: 0.388,
-    distance: 60,
+    distance: 90,
     speed: 0.0004,
     material: new THREE.MeshStandardMaterial({ 
       map: textures.neptune
     }),
-    moons: [
-      {
-        name: "Triton",
-        radius: 0.1,
-        distance: 2,
-        speed: 0.005,
-      },
-      {
-        name: "Nereid",
-        radius: 0.02,
-        distance: 2.5,
-        speed: 0.003,
-      },
-      {
-        name: "Naiad",
-        radius: 0.01,
-        distance: 1.5,
-        speed: 0.007,
-      },
-    ],
+    moons: [],
   },
 ];

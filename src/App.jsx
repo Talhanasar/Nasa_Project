@@ -1,10 +1,12 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './pages/ErrorPage';
 import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
 import AppLayout from './AppLayout';
-import Playground from './pages/Playground';
+
+const SolarPlanets = lazy(() => import('./pages/SolarPlanets'));
+const Planets = lazy(() => import('./pages/Planets'));
 
 function App() {
   const router = createBrowserRouter([
@@ -22,10 +24,18 @@ function App() {
           element: <AboutPage />,
         },
         {
-          path: "/playground",
+          path: "/playground/solarsystem",
           element: (
-            <Suspense fallback={<div>Loading Playground...</div>}>
-              <Playground />
+            <Suspense fallback={<div className='suspense-fallback'>Loading...</div>}>
+              <SolarPlanets/>
+            </Suspense>
+          ),
+        },
+        {
+          path: "/playground/planets",
+          element: (
+            <Suspense fallback={<div className='suspense-fallback'>Loading...</div>}>
+              <Planets/>
             </Suspense>
           ),
         },

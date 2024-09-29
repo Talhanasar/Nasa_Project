@@ -7,7 +7,8 @@ import '../css/header.css';
 
 const Header = ({ isLandingPage }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isEventsDropdownOpen, setEventsDropdownOpen] = useState(false);
+  const [isPlaygroundDropdownOpen, setPlaygroundDropdownOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const lenis = useLenis();
@@ -57,28 +58,27 @@ const Header = ({ isLandingPage }) => {
 
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${isLandingPage ? '' : 'default'}`}>
-      {/* <div className="name">The Zenith</div> */}
       <div className="logo">
         <img src="/images/logo.png" alt="Logo" />
       </div>
       <HamburgerMenu handleLinkClick={handleLinkClick} handleScrollOnClick={handleScrollOnClick} />
       <ul className="pc-menu">
-        <li onClick={()=>handleScrollOnClick('/')}>
+        <li onClick={() => handleScrollOnClick('/')}>
           <NavLink to="/">Home</NavLink>
         </li>
         <li
           className="dropdown"
-          onMouseEnter={() => setDropdownOpen(true)}
-          onMouseLeave={() => setDropdownOpen(false)}
+          onMouseEnter={() => setEventsDropdownOpen(true)}
+          onMouseLeave={() => setEventsDropdownOpen(false)}
         >
           Events
           <IoIosArrowDown
             style={{
-              transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+              transform: isEventsDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
               transition: 'transform 0.3s ease-in-out',
             }}
           />
-          {isDropdownOpen && (
+          {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
               <li onClick={() => handleLinkClick('page2')}>Conference</li>
               <li onClick={() => handleLinkClick('page3')}>Webinar</li>
@@ -86,11 +86,27 @@ const Header = ({ isLandingPage }) => {
             </ul>
           )}
         </li>
-        <li onClick={()=>handleScrollOnClick('/about')}>
+        <li onClick={() => handleScrollOnClick('/about')}>
           <NavLink to="/about">About Us</NavLink>
         </li>
-        <li onClick={()=>handleScrollOnClick('/playground')}>
-          <NavLink to="/playground">Play Ground</NavLink>
+        <li
+          className="dropdown"
+          onMouseEnter={() => setPlaygroundDropdownOpen(true)}
+          onMouseLeave={() => setPlaygroundDropdownOpen(false)}
+        >
+          Playground
+          <IoIosArrowDown
+            style={{
+              transform: isPlaygroundDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+              transition: 'transform 0.3s ease-in-out',
+            }}
+          />
+          {isPlaygroundDropdownOpen && (
+            <ul className="dropdown-menu">
+              <li onClick={() => handleScrollOnClick('/playground/solarsystem')}>Solar System</li>
+              <li onClick={() => handleScrollOnClick('/playground/planets')}>Planets</li>
+            </ul>
+          )}
         </li>
       </ul>
     </nav>
@@ -101,36 +117,51 @@ export default Header;
 
 const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [isEventsDropdownOpen, setEventsDropdownOpen] = useState(false);
+  const [isPlaygroundDropdownOpen, setPlaygroundDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
+  const toggleEventsDropdown = () => {
+    setEventsDropdownOpen(!isEventsDropdownOpen);
   };
+
+  const togglePlaygroundDropdown = () => {
+    setPlaygroundDropdownOpen(!isPlaygroundDropdownOpen);
+  };
+
+  const checkMenu = ()=>{
+      toggleMenu();
+      if(isEventsDropdownOpen){
+        toggleEventsDropdown();
+      }
+      if(isPlaygroundDropdownOpen){
+        togglePlaygroundDropdown();
+      }
+  }
 
   return (
     <div className="hamburger-container">
-      <div className="hamburger-icon" onClick={toggleMenu}>
+      <div className="hamburger-icon" onClick={checkMenu}>
         {isMenuOpen ? <FaTimes /> : <FaBars />}
       </div>
       <ul className={`hamburger-nav-links ${isMenuOpen ? 'open' : ''}`}>
-        <li onClick={()=>{toggleMenu(); handleScrollOnClick('/')}}>
+        <li onClick={() => { toggleMenu(); handleScrollOnClick('/') }}>
           <NavLink to="/">Home</NavLink>
         </li>
-        <li className="dropdown" onClick={toggleDropdown}>
+        <li className="dropdown" onClick={toggleEventsDropdown}>
           <div className="dropdown-header">
             Events
             <IoIosArrowDown
               style={{
-                transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                transform: isEventsDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                 transition: 'transform 0.3s ease-in-out',
               }}
             />
           </div>
-          {isDropdownOpen && (
+          {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
               <li onClick={() => { toggleMenu(); handleLinkClick('page2'); }}>Conference</li>
               <li onClick={() => { toggleMenu(); handleLinkClick('page3'); }}>Webinar</li>
@@ -138,11 +169,25 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
             </ul>
           )}
         </li>
-        <li onClick={()=>{toggleMenu(); handleScrollOnClick('/about')}}>
+        <li onClick={() => { toggleMenu(); handleScrollOnClick('/about') }}>
           <NavLink to="/about">About Us</NavLink>
         </li>
-        <li onClick={()=>{toggleMenu(); handleScrollOnClick('/playground')}}>
-          <NavLink to="/playground">Play Ground</NavLink>
+        <li className="dropdown" onClick={togglePlaygroundDropdown}>
+          <div className="dropdown-header">
+            Playground
+            <IoIosArrowDown
+              style={{
+                transform: isPlaygroundDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.3s ease-in-out',
+              }}
+            />
+          </div>
+          {isPlaygroundDropdownOpen && (
+            <ul className="dropdown-menu">
+              <li onClick={() => { toggleMenu(); handleScrollOnClick('/playground/solarsystem'); }}>Solar System</li>
+              <li onClick={() => { toggleMenu(); handleScrollOnClick('/playground/planets'); }}>Planets</li>
+            </ul>
+          )}
         </li>
       </ul>
     </div>

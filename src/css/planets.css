@@ -1,0 +1,97 @@
+.main-planets{
+    height: 100%;
+    width: 100vw;
+    min-height: 100vh;
+    background: url('/images/SolarSystem-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2vw;
+    padding: 3.5rem 0;
+    color: #fff;
+}
+.main-planets .header{
+    font-size: 2em;
+    width: 100%;
+    padding: 1.5rem;
+}
+.model-3d{
+    width: 80vw;
+    height: 80vh;
+    border: 2px solid #fff;
+    position: relative;
+}
+.model-3d .title{
+    font-size: 1.3em;
+    color: transparent;
+    position: absolute;
+    top:1rem;
+    left: 1rem;
+    -webkit-text-stroke: 0.01px #fff;
+}
+.arrow-icon{
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.arrow-icon:hover{
+    font-size: 2.5em;
+    color: #9785e8;
+}
+.arrow-icon.right{
+    position: absolute;
+    top: 50%;
+    right: 0.7rem;
+    transform: translateY(-50%);
+} 
+.arrow-icon.left{
+    position: absolute;
+    top: 50%;
+    left: 0.7rem;
+    transform: translateY(-50%);
+} 
+.info{
+    width: 92vw;
+    padding: 1.3rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+
+}
+.info li h2{
+    font-size: 1.5em;
+    color: transparent;
+    -webkit-text-stroke: 0.01px #fff;
+    margin-bottom: 0.8rem;
+}
+.info li p{
+    font-size: 0.8em;
+}
+
+@media (width< 450px){
+    .main-planets{
+        font-size: 2.5vh;
+    }
+    .model-3d{
+        width: 94vw;
+        height: 55vh;
+    }
+    .info li h2,
+    .model-3d .title{
+        -webkit-text-stroke: 0.5px #fff;
+    }
+    .arrow-icon.left{
+        left: 0.1rem;
+    }
+    .arrow-icon.right{
+        right: 0.1rem;
+    }
+}
+
