@@ -46,7 +46,7 @@ const AboutPage = () => {
             gmail={"mailto:mdhassan20.bd@gmail.com"}
           />
           <MemberCard info={{ name: "Talha", role: "Member" }}
-            skills={["MERN Devloper"]}
+            skills={["MERN Devloper","Full Stack Devloper"]}
             img={"talha.jpg"}
             linkedin={"https://www.linkedin.com/in/talha-7642a1264/"}
             gmail={"mailto:talhabinnasar7@gmail.com"}

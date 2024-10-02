@@ -80,9 +80,10 @@ const Header = ({ isLandingPage }) => {
           />
           {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
-              <li onClick={() => handleLinkClick('page2')}>Conference</li>
-              <li onClick={() => handleLinkClick('page3')}>Webinar</li>
-              <li onClick={() => handleLinkClick('page4')}>Workshop</li>
+              <li onClick={() => handleLinkClick('page2')}>First Page</li>
+              <li onClick={() => handleLinkClick('page3')}>Conference</li>
+              <li onClick={() => handleLinkClick('page4')}>Webinar</li>
+              <li onClick={() => handleLinkClick('page5')}>Workshop</li>
             </ul>
           )}
         </li>
@@ -163,9 +164,10 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
           </div>
           {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
-              <li onClick={() => { toggleMenu(); handleLinkClick('page2'); }}>Conference</li>
-              <li onClick={() => { toggleMenu(); handleLinkClick('page3'); }}>Webinar</li>
-              <li onClick={() => { toggleMenu(); handleLinkClick('page4'); }}>Workshop</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page2'); }}>First Page</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page3'); }}>Conference</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page4'); }}>Webinar</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page5'); }}>Workshop</li>
             </ul>
           )}
         </li>

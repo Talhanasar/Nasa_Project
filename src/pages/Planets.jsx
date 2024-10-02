@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect, useMemo } from 'react'
+import React, { Suspense, useState, useEffect, useMemo, useRef } from 'react'
 import { useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import { celestialObjects } from '../component/CelestialData'
@@ -12,6 +12,7 @@ const cubeTextureLoader = new THREE.CubeTextureLoader();
 const Planets = () => {
   const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0)
   const [initialTranslate, setInitialTranslate] = useState(45.5)
+  const carouselRef = useRef(null)
 
   const textures = useLoader(THREE.TextureLoader,
     planetNames.map(name => `/textures/${name}.jpg`)
@@ -45,11 +46,15 @@ const Planets = () => {
 
   const handleArrowClick = (direction) => {
     setCurrentPlanetIndex(prevIndex => {
-      if (direction === 'left') {
-        return prevIndex === 0 ? celestialObjects.length - 1 : prevIndex - 1;
-      } else {
-        return (prevIndex + 1) % celestialObjects.length;
+      const newIndex = direction === 'left'
+        ? (prevIndex === 0 ? celestialObjects.length - 1 : prevIndex - 1)
+        : (prevIndex + 1) % celestialObjects.length;
+      
+      if (carouselRef.current) {
+        carouselRef.current.style.transform = `translateX(${440 - (newIndex * 98 - (newIndex>4? 0.5: 0))}%)`;
       }
+      
+      return newIndex;
     });
   };
 
@@ -64,7 +69,6 @@ const Planets = () => {
 
   return (
     <section className='main-planets'>
-      <h1 className='header'>Planets</h1>
       <div className="model-3d">
         <Suspense fallback={<div>Loading Planet...</div>}>
           <Sketch 
@@ -74,20 +78,22 @@ const Planets = () => {
           />
         </Suspense>
         <h1 className='title'>{celestialObjects[currentPlanetIndex].title}</h1>
-          <IoIosArrowBack
-            className="arrow-icon left"
-            aria-label="Previous planet"
-            onClick={() => handleArrowClick('left')}
-          />
-          <IoIosArrowForward
-            className="arrow-icon right"
-            aria-label="Next planet"
-            onClick={() => handleArrowClick('right')}
-          />
+        <IoIosArrowBack
+          className="arrow-icon left"
+          aria-label="Previous planet"
+          onClick={() => handleArrowClick('left')}
+        />
+        <IoIosArrowForward
+          className="arrow-icon right"
+          aria-label="Next planet"
+          onClick={() => handleArrowClick('right')}
+        />
       </div>
-        <ul className="info">
-            {celestialObjectInfoItems}
+      <div className="carousel-container">
+        <ul className="info-planets" ref={carouselRef}>
+          {celestialObjectInfoItems}
         </ul>
+      </div>
     </section>
   )
 }
