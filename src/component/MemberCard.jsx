@@ -9,7 +9,7 @@ const MemberCard = ({ info, img, linkedin, gmail, github, skills }) => {
             <img src={`/images/${img}`} alt="Profile Image" className="card-image" />
             <p className="card-role">{info.role}</p>
             <h3 className="card-name">{info.name}</h3>
-            <p className="card-description">Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavrid from dolor amet iquam lorem bibendum</p>
+            <p className="card-description">Studying B.Sc. in Computer Science and Engineering.</p>
             <div className="skills">
                 <h3>Skills:</h3>
                 <ul>

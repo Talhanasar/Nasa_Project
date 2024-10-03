@@ -14,7 +14,7 @@
     padding: 1rem;
     color: white;
     font-size: 1.3em;
-    font-family: 'Viga', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 .solar-system-container{
     width: 100%;
@@ -33,7 +33,7 @@
     -webkit-text-stroke: 0.2px white;
     font-weight: 700;
     font-size: 1.5em;
-    font-family: 'Viga', sans-serif;
+    font-family: 'Inter', sans-serif;
     z-index: 1;
 }
 .main .info{
@@ -48,7 +48,7 @@
     backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
     border-radius: 1rem;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Public Sans', sans-serif;
 
     li{
         list-style-type: circle;
@@ -64,5 +64,8 @@
     .solar-system-container{
         height: 50vh;
         width: 90%;
+    }
+    .solar-system-container .title{
+        -webkit-text-stroke: 0.5px white;
     }
 }

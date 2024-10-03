@@ -4,6 +4,7 @@ import ErrorPage from './pages/ErrorPage';
 import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
 import AppLayout from './AppLayout';
+import GeomagneticStorms from './pages/GeomagneticStorms';
 
 const SolarPlanets = lazy(() => import('./pages/SolarPlanets'));
 const Planets = lazy(() => import('./pages/Planets'));
@@ -38,6 +39,10 @@ function App() {
               <Planets/>
             </Suspense>
           ),
+        },
+        {
+          path: "/geomagnetic-storms/:planet",
+          element: <GeomagneticStorms/>
         },
       ],
     },

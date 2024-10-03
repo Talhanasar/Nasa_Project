@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { NavLink, useLocation, useOutletContext } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useLenis } from 'lenis/react';
+import stormData from '../component/stormData';
 import "../css/landing.css";
 
 const LandingPage = () => {
@@ -13,8 +14,15 @@ const LandingPage = () => {
     const videoRef = useRef(null);
 
     const wrapTextInSpans = (text) => {
-        return text.split('').map((char, index) => (
-            <span key={index}>{char === ' ' ? '\u00A0' : char}</span>
+        const chars = text.split('');
+        const middleIndex = Math.floor(chars.length / 2);
+        return chars.map((char, index) => (
+            <span 
+                key={index} 
+                className={index < middleIndex ? 'left' : 'right'}
+            >
+                {char === ' ' ? '\u00A0' : char}
+            </span>
         ));
     };
 
@@ -56,7 +64,8 @@ const LandingPage = () => {
             const contents = document.querySelectorAll('.content');
 
             contents.forEach((content) => {
-                const spans = content.querySelectorAll("h1 span");
+                const spansLeft = content.querySelectorAll("h1 .left");
+                const spansRight = content.querySelectorAll("h1 .right");
                 const para = content.querySelector("p");
                 const btn = content.querySelector(".read-more-btn");
 
@@ -67,34 +76,44 @@ const LandingPage = () => {
                     }
                 });
 
-                tl.from(spans, {
+
+                tl.from(spansLeft, {
                     opacity: 0,
                     y: 60,
-                    duration: 1.2,
+                    duration: 0.8,
                     stagger: 0.07
-                });
+                },"headings");
+                tl.from(spansRight, {
+                    opacity: 0,
+                    y: 60,
+                    duration: 0.8,
+                    stagger: {
+                        each: 0.07,
+                        from: "end"
+                    }
+                },"headings");
                 tl.from(para, {
                     opacity: 0,
                     y: 50,
-                    duration: 1,
+                    duration: 0.8,
                 }, '-=0.8')
                 tl.from(btn, {
                     opacity: 0,
-                    x: -100,
-                    duration: 1,
+                    y: 50,
+                    duration: 0.8,
                 }, '-=0.8');
             });
             const h1_spans = document.querySelectorAll('.section2 h1 span');
             gsap.from(h1_spans, {
                 opacity: 0,
-                y: 50,
-                duration: 1,
+                y: 60,
+                duration: 0.8,
                 scrollTrigger: {
                     trigger: '.section2',
                     start: 'top 75%',
                     toggleActions: 'play none none reverse'
                 },
-                stagger: 0.07
+                stagger: 0.05
             });
         }, 500);
         return () => clearTimeout(timer);
@@ -116,32 +135,41 @@ const LandingPage = () => {
 
             <section id='page2' className="sections section2">
                 <video autoPlay muted loop src={`/video/geomagnetic.mp4`} />
-                <h1>{wrapTextInSpans('Geomagnetic Storms')}</h1>
+                <div className="headings">
+                    <h1>{wrapTextInSpans('Geomagnetic')}</h1>
+                    <h1>{wrapTextInSpans('Storms')}</h1>
+                </div>
             </section>
             <section id='page3' className="sections section3">
                 <video autoPlay muted loop src={`/video/earth.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Effects on Earth')}</h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet, libero.</p>
-                    <span className="read-more-btn"><NavLink to={"/"}>Read more...</NavLink></span>
+                    <h1>{wrapTextInSpans('Geomagnetic Storm on Earth')}</h1>
+                    <p>{stormData.earth.description}</p>
+                    <NavLink to={"/geomagnetic-storms/earth"}>
+                        <button className="read-more-btn">Read more</button>
+                    </NavLink>
                 </div>
             </section>
 
             <section id='page4' className="sections section4">
                 <video autoPlay muted loop src={`/video/moon.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Effects on Moon')}</h1>
-                    <p>A short description of what the design showcases. This should also align with the theme of the background.</p>
-                    <span className="read-more-btn"><NavLink to={"/"}>Read more...</NavLink></span>
+                    <h1>{wrapTextInSpans('Geomagnetic Storm on Moon ')}</h1>
+                    <p>{stormData.moon.description}</p>
+                    <NavLink to={"/geomagnetic-storms/moon"}>
+                        <button className="read-more-btn">Read more</button>
+                    </NavLink>
                 </div>
             </section>
 
             <section id='page5' className="sections section5">
                 <video autoPlay muted loop src={`/video/mars.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Effects on Mars')}</h1>
-                    <p>A detailed description goes here about the vision or theme of this section.</p>
-                    <span className="read-more-btn"><NavLink to={"/"}>Read more...</NavLink></span>
+                    <h1>{wrapTextInSpans('Geomagnetic Storm on Mars ')}</h1>
+                    <p>{stormData.mars.description}</p>
+                    <NavLink to={"/geomagnetic-storms/mars"}>
+                        <button className="read-more-btn">Read more</button>
+                    </NavLink>
                 </div>
             </section>
         </>

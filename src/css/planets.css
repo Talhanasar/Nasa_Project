@@ -15,7 +15,7 @@
     font-size: 2em;
     width: 100%;
     padding: 1.3rem;
-    font-family: 'Viga', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .model-3d {
@@ -30,8 +30,8 @@
     position: absolute;
     top: 1rem;
     left: 1rem;
-    -webkit-text-stroke: 0.01px #fff;
-    font-family: 'Viga', sans-serif;
+    -webkit-text-stroke: 0.5px #fff;
+    font-family: 'Inter', sans-serif;
 }
 
 .arrow-icon{
@@ -61,15 +61,15 @@
 .info-item h2 {
     font-size: 1.5em;
     color: transparent;
-    -webkit-text-stroke: 0.01px #fff;
+    -webkit-text-stroke: 0.5px #fff;
     margin-bottom: 0.8rem;
-    font-family: 'Viga', sans-serif;
+    font-family: 'Inter', sans-serif;
     position: relative;
 }
 
 .info-item p {
     font-size: 0.8em;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Public Sans', sans-serif;
 }
 
 

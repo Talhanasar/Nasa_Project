@@ -8,8 +8,9 @@ function PlanetLabel({ name }) {
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d')
     
-    // Set font first to measure text
-    context.font = 'Bold 5rem Arial'
+    // Set font size based on planet name
+    const fontSize = name === 'Sun' ? '3rem' : '5rem'
+    context.font = `Bold ${fontSize} Public Sans`
     
     // Measure text width
     const textWidth = context.measureText(name).width
@@ -19,7 +20,7 @@ function PlanetLabel({ name }) {
     canvas.height = 135
 
     // Set font again after resizing canvas
-    context.font = 'Bold 5rem Arial'
+    context.font = `Bold ${fontSize} Arial`
     context.fillStyle = 'rgba(255, 255, 255, 1)'
     
     // Center text horizontally
