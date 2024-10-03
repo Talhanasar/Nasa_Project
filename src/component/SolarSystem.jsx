@@ -34,7 +34,7 @@ const Planet = ({ planet }) => {
       {planet.name === "Saturn" && (
         <mesh rotation={[Math.PI/3, 0, 0]}>
           <ringGeometry args={[1.2, 2, 35]} />
-          <meshBasicMaterial map={useLoader(THREE.TextureLoader, "/textures/saturn_ring.jpg")} side={THREE.DoubleSide} />
+          <meshBasicMaterial map={useLoader(THREE.TextureLoader, "/textures/saturn_Ring.png")} side={THREE.DoubleSide} />
         </mesh>
       )}
       {planet.moons.map((moon, index) => (

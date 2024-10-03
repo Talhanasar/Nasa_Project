@@ -47,16 +47,15 @@
 
 .info-planets {
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 1.5rem;
-    width: 100%;
     transition: transform 0.5s ease;
-    transform: translateX(440%);
+    width: max-content;  /* Allow container to grow as needed */
+    transform: translateX(0.5%);
 }
+
 .info-item {
-    flex: 0 0 96%;
-    width: 96%;
+    width: 93vw;
+    flex-shrink: 0;
 }
 
 .info-item h2 {
@@ -68,7 +67,7 @@
     position: relative;
 }
 
-.info li p {
+.info-item p {
     font-size: 0.8em;
     font-family: 'Roboto', sans-serif;
 }
@@ -100,7 +99,7 @@
         height: 55vh;
     }
 
-    .info li h2,
+    .info-item h2,
     .model-3d .title {
         -webkit-text-stroke: 0.5px #fff;
     }

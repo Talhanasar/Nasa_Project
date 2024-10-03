@@ -23,7 +23,7 @@ const Header = ({ isLandingPage }) => {
         setIsScrolled(false);
       }
     };
-    if(isLandingPage){
+    if (isLandingPage) {
       window.addEventListener('scroll', handleScroll);
     }
     return () => {
@@ -47,11 +47,11 @@ const Header = ({ isLandingPage }) => {
     }
   };
 
-  const handleScrollOnClick = (path)=>{
-    if(path === location.pathname){
+  const handleScrollOnClick = (path) => {
+    if (path === location.pathname) {
       lenis.scrollTo(0, { duration: 0 });
     }
-    else{
+    else {
       navigate(path);
     }
   }
@@ -87,9 +87,6 @@ const Header = ({ isLandingPage }) => {
             </ul>
           )}
         </li>
-        <li onClick={() => handleScrollOnClick('/about')}>
-          <NavLink to="/about">About Us</NavLink>
-        </li>
         <li
           className="dropdown"
           onMouseEnter={() => setPlaygroundDropdownOpen(true)}
@@ -108,6 +105,9 @@ const Header = ({ isLandingPage }) => {
               <li onClick={() => handleScrollOnClick('/playground/planets')}>Planets</li>
             </ul>
           )}
+        </li>
+        <li onClick={() => handleScrollOnClick('/about')}>
+          <NavLink to="/about">About Us</NavLink>
         </li>
       </ul>
     </nav>
@@ -133,14 +133,14 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
     setPlaygroundDropdownOpen(!isPlaygroundDropdownOpen);
   };
 
-  const checkMenu = ()=>{
-      toggleMenu();
-      if(isEventsDropdownOpen){
-        toggleEventsDropdown();
-      }
-      if(isPlaygroundDropdownOpen){
-        togglePlaygroundDropdown();
-      }
+  const checkMenu = () => {
+    toggleMenu();
+    if (isEventsDropdownOpen) {
+      toggleEventsDropdown();
+    }
+    if (isPlaygroundDropdownOpen) {
+      togglePlaygroundDropdown();
+    }
   }
 
   return (
@@ -171,9 +171,6 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
             </ul>
           )}
         </li>
-        <li onClick={() => { toggleMenu(); handleScrollOnClick('/about') }}>
-          <NavLink to="/about">About Us</NavLink>
-        </li>
         <li className="dropdown" onClick={togglePlaygroundDropdown}>
           <div className="dropdown-header">
             Playground
@@ -190,6 +187,9 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
               <li onClick={() => { toggleMenu(); handleScrollOnClick('/playground/planets'); }}>Planets</li>
             </ul>
           )}
+        </li>
+        <li onClick={() => { toggleMenu(); handleScrollOnClick('/about') }}>
+          <NavLink to="/about">About Us</NavLink>
         </li>
       </ul>
     </div>

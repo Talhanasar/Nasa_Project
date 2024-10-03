@@ -84,6 +84,18 @@ const LandingPage = () => {
                     duration: 1,
                 }, '-=0.8');
             });
+            const h1_spans = document.querySelectorAll('.section2 h1 span');
+            gsap.from(h1_spans, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: '.section2',
+                    start: 'top 75%',
+                    toggleActions: 'play none none reverse'
+                },
+                stagger: 0.07
+            });
         }, 500);
         return () => clearTimeout(timer);
 
@@ -103,6 +115,8 @@ const LandingPage = () => {
             </section>
 
             <section id='page2' className="sections section2">
+                <video autoPlay muted loop src={`/video/geomagnetic.mp4`} />
+                <h1>{wrapTextInSpans('Geomagnetic Storms')}</h1>
             </section>
             <section id='page3' className="sections section3">
                 <video autoPlay muted loop src={`/video/earth.mp4`} />
@@ -114,19 +128,19 @@ const LandingPage = () => {
             </section>
 
             <section id='page4' className="sections section4">
-                <video autoPlay muted loop src={`/video/mars.mp4`} />
+                <video autoPlay muted loop src={`/video/moon.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Effects on Mars')}</h1>
-                    <p>A detailed description goes here about the vision or theme of this section.</p>
+                    <h1>{wrapTextInSpans('Effects on Moon')}</h1>
+                    <p>A short description of what the design showcases. This should also align with the theme of the background.</p>
                     <span className="read-more-btn"><NavLink to={"/"}>Read more...</NavLink></span>
                 </div>
             </section>
 
             <section id='page5' className="sections section5">
-                <video autoPlay muted loop src={`/video/moon.mp4`} />
+                <video autoPlay muted loop src={`/video/mars.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Effects on Moon')}</h1>
-                    <p>A short description of what the design showcases. This should also align with the theme of the background.</p>
+                    <h1>{wrapTextInSpans('Effects on Mars')}</h1>
+                    <p>A detailed description goes here about the vision or theme of this section.</p>
                     <span className="read-more-btn"><NavLink to={"/"}>Read more...</NavLink></span>
                 </div>
             </section>

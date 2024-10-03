@@ -11,7 +11,6 @@ const cubeTextureLoader = new THREE.CubeTextureLoader();
 
 const Planets = () => {
   const [currentPlanetIndex, setCurrentPlanetIndex] = useState(0)
-  const [initialTranslate, setInitialTranslate] = useState(45.5)
   const carouselRef = useRef(null)
 
   const textures = useLoader(THREE.TextureLoader,
@@ -33,17 +32,6 @@ const Planets = () => {
     ])
   , []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setInitialTranslate(width < 450 ? -0.5 : 45.5);
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   const handleArrowClick = (direction) => {
     setCurrentPlanetIndex(prevIndex => {
       const newIndex = direction === 'left'
@@ -51,7 +39,7 @@ const Planets = () => {
         : (prevIndex + 1) % celestialObjects.length;
       
       if (carouselRef.current) {
-        carouselRef.current.style.transform = `translateX(${440 - (newIndex * 98 - (newIndex>4? 0.5: 0))}%)`;
+        carouselRef.current.style.transform = `translateX(${0.5 - (newIndex * 10.1 - (newIndex>4? 0.2: 0))}%)`;
       }
       
       return newIndex;

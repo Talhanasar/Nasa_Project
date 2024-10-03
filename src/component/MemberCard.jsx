@@ -1,9 +1,9 @@
 import React from 'react'
-import { FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import "../css/member-card.css"
 import { BiLogoGmail } from 'react-icons/bi';
 
-const MemberCard = ({ info, img, linkedin, gmail, skills }) => {
+const MemberCard = ({ info, img, linkedin, gmail, github, skills }) => {
     return (
         <div className="card">
             <img src={`/images/${img}`} alt="Profile Image" className="card-image" />
@@ -28,7 +28,7 @@ const MemberCard = ({ info, img, linkedin, gmail, skills }) => {
                             rel="noopener noreferrer"
                             className="gmail"
                         >
-                            <BiLogoGmail size={24} /> {/* React icon with size */}
+                            <BiLogoGmail size={24} />
                         </a>
                     }
                     {linkedin &&
@@ -38,7 +38,17 @@ const MemberCard = ({ info, img, linkedin, gmail, skills }) => {
                             rel="noopener noreferrer"
                             className="linkedin"
                         >
-                            <FaLinkedinIn size={24} /> {/* React icon with size */}
+                            <FaLinkedinIn size={24} />
+                        </a>
+                    }
+                    {github && github.trim() !== "" &&
+                        <a
+                            href={github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="github"
+                        >
+                            <FaGithub size={24} /> 
                         </a>
                     }
                 </div>

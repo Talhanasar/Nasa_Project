@@ -56,7 +56,7 @@ export const celestialBodies = {
       ambientLightIntensity: 0.17
     },
     saturn: {
-      scale: 1.3,
+      scale: 1,
       metalness: 0.3,
       roughness: 0.8,
       position: [0, -0.7, 0],

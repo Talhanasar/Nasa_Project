@@ -73,7 +73,8 @@ h3 {
 }
 
 .gmail,
-.linkedin {
+.linkedin,
+.github {
   border: 1px solid black;
   border-radius: 50%;
   color: black;
@@ -90,7 +91,8 @@ h3 {
 }
 
 .gmail::before,
-.linkedin::before {
+.linkedin::before,
+.github::before {
   content: '';
   position: absolute;
   top: 0;
@@ -103,6 +105,10 @@ h3 {
 
 .gmail::before {
   background-color: #ebeded;
+}
+
+.github::before {
+  background-color: #000;
 }
 
 .gmail:hover::before {
@@ -125,17 +131,29 @@ h3 {
   color: white;
 }
 
+.github:hover::before {
+  width: 100%;
+}
+
+.github:hover {
+  color: white;
+}
+
 /* Design for smart phones width below 640px */
 @media(width< 640px) {
 
   .gmail::before,
-  .linkedin::before {
+  .linkedin::before,
+  .github::before {
     width: 100%;
   }
   .gmail {
     color: rgb(215, 25, 25);
   }
   .linkedin {
+    color: white;
+  }
+  .github {
     color: white;
   }
 
@@ -164,7 +182,8 @@ h3 {
       gap: 1.2rem;
     }
     .gmail,
-    .linkedin{
+    .linkedin,
+    .github {
       height: 2.5rem;
       width: 2.5rem;
       svg{
