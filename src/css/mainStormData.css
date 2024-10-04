@@ -1,6 +1,6 @@
 .main-storm-data-container {
     padding: 20px;
-    max-width: 1100px;
+    max-width: 90vw;
     margin: 0 auto;
     background-color: #f8f9fa;
     border-radius: 10px;
@@ -59,10 +59,16 @@
     border-radius: 8px;
   }
   
+  @media (width>1400px) {
+    .main-storm-data-container {
+      font-size: 1.7vw;
+    }
+  }
   @media (max-width: 600px) {
     .main-storm-data-container {
       padding: 15px;
       font-size: 2vh;
+      max-width: 98vw;
     }
   }
   

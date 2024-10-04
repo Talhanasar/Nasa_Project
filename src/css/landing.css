@@ -25,8 +25,12 @@
   overflow: hidden;
   transform: translateY(-50%);
   font-family: "Inter";
+  line-height: 1;
   span{
     display: inline-block;
+  }
+  .read-more-btn{
+    margin-top: 0;
   }
 }
 

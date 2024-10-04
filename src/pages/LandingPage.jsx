@@ -3,7 +3,6 @@ import { NavLink, useLocation } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useLenis } from 'lenis/react';
-import stormData from '../component/stormData';
 import "../css/landing.css";
 
 const LandingPage = () => {
@@ -20,14 +19,6 @@ const LandingPage = () => {
                 {char === ' ' ? '\u00A0' : char}
             </span>
         ));
-    };
-
-    const truncateDescription = (description, wordLimit = 20) => {
-        const words = description.split(' ');
-        if (words.length > wordLimit) {
-            return words.slice(0, wordLimit).join(' ') + '...';
-        }
-        return description;
     };
 
     useEffect(() => {
@@ -148,7 +139,7 @@ const LandingPage = () => {
                     <h1>{wrapTextInSpans('Geomagnetic')}</h1>
                     <h1>{wrapTextInSpans('Storm')}</h1>
                     <NavLink to={"/geomagnetic-storms/main"}>
-                        <button className="read-more-btn">Read more</button>
+                        <button className="read-more-btn">Read more...</button>
                     </NavLink>
                 </div>
             </section>
@@ -157,9 +148,9 @@ const LandingPage = () => {
                 <div className="content">
                     <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm ')}</h1>
                     <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Earth')}</h1>
-                    <p>{truncateDescription(stormData.earth.description)}</p>
+                    <p>Earth is protected by a strong magnetic field, which shields the planet from the harmful effects of solar wind and...</p>
                     <NavLink to={"/geomagnetic-storms/earth"}>
-                        <button className="read-more-btn">Read more</button>
+                        <button className="read-more-btn">Read more...</button>
                     </NavLink>
                 </div>
             </section>
@@ -169,9 +160,9 @@ const LandingPage = () => {
                 <div className="content">
                     <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm')}</h1>
                     <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Moon')}</h1>
-                    <p>{truncateDescription(stormData.moon.description)}</p>
+                    <p>The Moon lacks a protective magnetic field or atmosphere, making it directly exposed to solar wind and...</p>
                     <NavLink to={"/geomagnetic-storms/moon"}>
-                        <button className="read-more-btn">Read more</button>
+                        <button className="read-more-btn">Read more...</button>
                     </NavLink>
                 </div>
             </section>
@@ -181,9 +172,9 @@ const LandingPage = () => {
                 <div className="content">
                     <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm')}</h1>
                     <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Mars')}</h1>
-                    <p>{truncateDescription(stormData.mars.description)}</p>
+                    <p>Mars lacks a global magnetic field, making it more susceptible to the effects of solar storms. NASA's MAVEN...</p>
                     <NavLink to={"/geomagnetic-storms/mars"}>
-                        <button className="read-more-btn">Read more</button>
+                        <button className="read-more-btn">Read more...</button>
                     </NavLink>
                 </div>
             </section>
