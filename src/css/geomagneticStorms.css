@@ -30,6 +30,7 @@
   color: #555;
   line-height: 1.6;
   margin-bottom: 30px;
+  text-align: justify;
 }
 .description-rest{
   font-size: 0.7em;
@@ -38,6 +39,7 @@
   margin-bottom: 30px;
   border-left: 4px solid #ff9800;
   padding-left: 10px;
+  text-align: justify;
 }
 
 .subtitle {
@@ -56,6 +58,8 @@
   padding: 0;
   margin: 0;
   margin-bottom: 30px;
+  text-align: justify;
+  line-height: 1.6;
 }
 
 .effects-list li,
