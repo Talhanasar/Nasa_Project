@@ -4,7 +4,7 @@ import '../css/Geomagnetic.css'
 const Geomagnetic = () => {
   return (
     <div className='main-geomagnetic'>
-      <h1>Coming Soon... !</h1>
+     <video src="/video/geomagnetic storm.mp4" autoPlay loop muted></video>
     </div>
   )
 }

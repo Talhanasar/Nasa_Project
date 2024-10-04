@@ -105,7 +105,7 @@ const Header = ({ isLandingPage }) => {
             <ul className="dropdown-menu">
               <li onClick={() => handleScrollOnClick('/playground/solarsystem')}>Solar System</li>
               <li onClick={() => handleScrollOnClick('/playground/planets')}>Planets</li>
-              <li onClick={() => handleScrollOnClick('/playground/geomagneticstorm')}>Geomagnetic Storm</li>
+              <li onClick={() => handleScrollOnClick('/playground/geomagneticstorm/video')}>Geomagnetic Storm</li>
             </ul>
           )}
         </li>
@@ -189,6 +189,7 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
             <ul className="dropdown-menu">
               <li onClick={() => { toggleMenu(); handleScrollOnClick('/playground/solarsystem'); }}>Solar System</li>
               <li onClick={() => { toggleMenu(); handleScrollOnClick('/playground/planets'); }}>Planets</li>
+              <li onClick={() => { toggleMenu(); handleScrollOnClick('/playground/geomagneticstorm/video'); }}>Geomagnetic Storm</li>
             </ul>
           )}
         </li>

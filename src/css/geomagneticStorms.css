@@ -31,6 +31,14 @@
   line-height: 1.6;
   margin-bottom: 30px;
 }
+.description-rest{
+  font-size: 0.7em;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  border-left: 4px solid #ff9800;
+  padding-left: 10px;
+}
 
 .subtitle {
   font-size: 1em;

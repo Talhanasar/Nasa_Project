@@ -5,9 +5,9 @@ import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
 import AppLayout from './AppLayout';
 import GeomagneticStorms from './pages/GeomagneticStorms';
-import Geomagnetic from './pages/Geomagnetic';
 import StormForcast from './pages/StormForcast';
 
+const Geomagnetic = lazy(() => import('./pages/Geomagnetic'));
 const SolarPlanets = lazy(() => import('./pages/SolarPlanets'));
 const Planets = lazy(() => import('./pages/Planets'));
 
@@ -47,8 +47,12 @@ function App() {
           element: <GeomagneticStorms/>
         },
         {
-          path:"/playground/geomagneticstorm",
-          element:<Geomagnetic/>
+          path:"/playground/geomagneticstorm/video",
+          element:(
+            <Suspense fallback={<div className='suspense-fallback'>Loading...</div>}>
+              <Geomagnetic/>
+            </Suspense>
+          ),
         },
         {
           path:"/stormforcast",
