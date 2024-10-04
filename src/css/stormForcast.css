@@ -3,12 +3,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: url('/images/GeomagneticStorm-bg.png');
 }
 
 .content-container {
     max-width: 89vw;
     padding: 20px;
-    background-color: #fff;
+    background-color: #f8f8f8e2;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-size: 2vw;

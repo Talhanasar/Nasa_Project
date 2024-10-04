@@ -12,6 +12,7 @@ const AboutPage = () => {
 
   useEffect(() => {
     const checkWrapping = () => {
+      if (!membersRef.current) return;
       const skillsLists = membersRef.current.querySelectorAll('.skills ul');
       let wrapped = false;
 
@@ -28,34 +29,43 @@ const AboutPage = () => {
       setIsAnyCardWrapped(wrapped);
     };
 
-    const timer = setTimeout(() => {
+    const setupScrollTriggers = () => {
       const allCards = document.querySelectorAll('.card');
-      ScrollTrigger.refresh();
       allCards.forEach((card) => {
-        gsap.from(card,
-          {
-            opacity: 0,
-            y: 100,
-            duration: 1.5,
-            scrollTrigger: {
-              trigger: card,
-              scroller: "body",
-              start: "top 75%",
-              toggleActions: "play none none none",
-            }
+        gsap.from(card, {
+          opacity: 0,
+          y: 100,
+          duration: 1.5,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 75%",
+            toggleActions: "play none none none",
           }
-        );
+        });
       });
+    };
 
+    const initializeAndRefresh = () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+      ScrollTrigger.refresh();
+      setupScrollTriggers();
       checkWrapping();
-    }, 100);
+    };
 
-    window.addEventListener('resize', checkWrapping);
+    // Initial setup
+    const timer = setTimeout(initializeAndRefresh, 100);
+
+    // Setup resize handler
+    const handleResize = () => {
+      initializeAndRefresh();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
       clearTimeout(timer);
       ScrollTrigger.getAll().forEach(t => t.kill());
-      window.removeEventListener('resize', checkWrapping);
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
@@ -71,7 +81,7 @@ const AboutPage = () => {
   return (
     <div className='page'>
       <div className="top">
-        <h1>Our Team</h1>
+        <h1>The Zenith Team members</h1>
       </div>
       <ul className="members" ref={membersRef}>
         {members.map((member, index) => (

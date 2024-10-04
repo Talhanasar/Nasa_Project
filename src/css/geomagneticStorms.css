@@ -1,14 +1,14 @@
 .geomagnetic-storms-container ,
 .main-container {
   padding: 6rem 0.8rem 2rem 0.8rem;
-  background-color: #fff;
+  background: url('/images/GeomagneticStorm-bg.png');
 }
 
 .geomagnetic-storms {
   max-width: 90vw;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #f8f8f8e2;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
   color: #333;
@@ -27,14 +27,14 @@
 
 .description {
   font-size: 0.7em;
-  color: #555;
+  color: #050505;
   line-height: 1.6;
   margin-bottom: 30px;
   text-align: justify;
 }
 .description-rest{
   font-size: 0.7em;
-  color: #666;
+  color: #0b0b0b;
   line-height: 1.6;
   margin-bottom: 30px;
   border-left: 4px solid #ff9800;
