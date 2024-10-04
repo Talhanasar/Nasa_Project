@@ -2,20 +2,20 @@
     max-width: 800px;
     margin: 0 auto;
   }
-  h1 {
+  .container h1 {
     text-align: center;
     color: #333;
   }
-  form {
+  .container form {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
   }
-  input[type="date"] {
+  .container input[type="date"] {
     padding: 10px;
     font-size: 16px;
   }
-  button {
+  .container button {
     padding: 10px 15px;
     margin-left: 10px;
     font-size: 16px;
@@ -25,20 +25,20 @@
     border: none;
     border-radius: 5px;
   }
-  .result {
+  .container .result {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-  .no-data {
+  .container .no-data {
     color: red;
     text-align: center;
   }
-  .gst-data {
+  .container .gst-data {
     margin-bottom: 20px;
   }
-  .gst-data h3 {
+  .container .gst-data h3 {
     margin: 0 0 10px;
   }
   
