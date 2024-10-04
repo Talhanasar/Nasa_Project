@@ -39,7 +39,7 @@ const Planets = () => {
         : (prevIndex + 1) % celestialObjects.length;
       
       if (carouselRef.current) {
-        carouselRef.current.style.transform = `translateX(${0 - (newIndex * 10 + (newIndex>5? 0.1: 0))}%)`;
+        carouselRef.current.style.transform = `translateX(${0 - (newIndex * 11.1)}%)`;
       }
       
       return newIndex;

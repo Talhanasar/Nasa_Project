@@ -103,11 +103,6 @@ export const celestialObjects = [
         description: "Earth, the only known planet to support life, orbits 150 million km from the Sun and has a diameter of 12,742 km. It has the perfect combination of water, an oxygen-rich atmosphere, and moderate temperatures to sustain life. Earth's surface is 71% water, and it completes an orbit around the Sun every 365.25 days."
     },
     {
-        name: "Moon",
-        title: "Moon's 3D model",
-        description: "The Moon, Earth's only natural satellite, orbits at an average distance of 384,400 km and has a diameter of 3,474 km. It lacks an atmosphere and is covered in regolith, with numerous impact craters. The Moon's gravity affects Earth's tides, and it always shows the same face to Earth due to its synchronous rotation. Its surface experiences extreme temperature variations from 127°C to -173°C."
-    },
-    {
         name: "Mars",
         title: "Mars's 3D model",
         description: "Mars, the 'Red Planet', orbits 228 million km from the Sun and has a diameter of 6,779 km. Its reddish appearance is due to iron-rich dust on its surface. Mars has polar ice caps, large valleys that may have once held water, and a thin atmosphere mostly composed of carbon dioxide. A Martian year lasts 687 Earth days. It's a prime target for exploration and potential future human habitation."
