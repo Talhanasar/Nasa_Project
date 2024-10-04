@@ -1,14 +1,26 @@
-.full-container{
+.storm-forecast-page{
     padding: 5rem 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background: url('/images/GeomagneticStorm-bg.png');
 }
+.search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.785);
+    padding: 2rem;
+    border-radius: 1rem;
+    height: 75vh;
+}
 
 .content-container {
-    max-width: 89vw;
+    flex: 1;
     padding: 20px;
+    overflow-y: auto;
+    max-width: 89vw;
     background-color: #f8f8f8e2;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -26,7 +38,7 @@
 
 .content-container p {
     margin-bottom: 16px;
-    font-size: 0.8em;
+    font-size: 0.7em;
     line-height: 1.8;
     text-align: justify;
 }
@@ -38,4 +50,32 @@
 
 .content-container a:hover {
     text-decoration: underline;
+}
+
+.storm-forecast-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+.search-container {
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+@media (min-height: 768px) {
+    .storm-forecast-page {
+        flex-direction: row;
+    }
+
+    .content-container {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    .search-container {
+        width: 300px;
+        overflow-y: auto;
+    }
 }

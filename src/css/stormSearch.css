@@ -1,0 +1,44 @@
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  form {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  input[type="date"] {
+    padding: 10px;
+    font-size: 16px;
+  }
+  button {
+    padding: 10px 15px;
+    margin-left: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  .result {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .no-data {
+    color: red;
+    text-align: center;
+  }
+  .gst-data {
+    margin-bottom: 20px;
+  }
+  .gst-data h3 {
+    margin: 0 0 10px;
+  }
+  
