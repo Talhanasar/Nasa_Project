@@ -5,6 +5,8 @@ import LandingPage from './pages/LandingPage';
 import AboutPage from './pages/AboutPage';
 import AppLayout from './AppLayout';
 import GeomagneticStorms from './pages/GeomagneticStorms';
+import Geomagnetic from './pages/Geomagnetic';
+import StormForcast from './pages/StormForcast';
 
 const SolarPlanets = lazy(() => import('./pages/SolarPlanets'));
 const Planets = lazy(() => import('./pages/Planets'));
@@ -44,6 +46,14 @@ function App() {
           path: "/geomagnetic-storms/:planet",
           element: <GeomagneticStorms/>
         },
+        {
+          path:"/playground/geomagneticstorm",
+          element:<Geomagnetic/>
+        },
+        {
+          path:"/stormforcast",
+          element:<StormForcast/>
+        }
       ],
     },
   ]);

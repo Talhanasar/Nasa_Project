@@ -1,45 +1,104 @@
 const stormData = {
-    earth: {
-      description: "Earth is protected by a strong magnetic field, which shields the planet from the harmful effects of solar wind and geomagnetic storms. However, during intense geomagnetic storms, Earth's magnetosphere can be temporarily disturbed, leading to auroras and disruptions to satellites and power grids.",
-      effects: {
-        Auroras: "Geomagnetic storms can generate bright auroras near the poles by funneling charged particles along Earth's magnetic field lines, causing them to collide with atmospheric gases.",
-        SatelliteDisruptions: "Geomagnetic storms can interfere with satellite operations, impacting communication systems, GPS accuracy, and weather forecasting.",
-        PowerGridFailures: "Large geomagnetic storms can induce electric currents in power grids, potentially causing widespread outages and damage to electrical infrastructure."
-      },
-      may2024Storm: {
-        Summary: "In May 2024, Earth experienced a powerful geomagnetic storm caused by an X12-class solar flare and a coronal mass ejection.",
-        Auroras: "Auroras were visible at unusually low latitudes, providing stunning light displays far from the poles.",
-        SatelliteIssues: "Several communication satellites experienced temporary malfunctions, and GPS systems showed slight inaccuracies during the peak of the storm.",
-        powerGridRisks: "Power companies increased monitoring for unusual electrical activity, but no major blackouts occurred during this event."
-      }
+  main: {
+    description: "Geomagnetic storms are significant disruptions of Earth's magnetosphere that occur when there is a very effective transfer of energy from the solar wind into the surrounding space environment. These disturbances can be triggered by solar coronal mass ejections (CMEs) or co-rotating interaction regions (CIRs), which are fast-moving streams of solar wind from coronal holes. The frequency of geomagnetic storms is influenced by the sunspot cycle, with more storms occurring at solar maxima, primarily caused by CMEs.",
+    mechanism: "The storm begins with an increase in solar wind pressure, compressing the magnetosphere. The interaction between the Earth's magnetic field and the solar wind's magnetic field increases energy transfer into the magnetosphere. This results in enhanced electric currents in the magnetosphere and ionosphere, as well as increased plasma mobility through the magnetosphere due to growing electric fields.",
+    phases: {
+      Initial: "Also known as a storm sudden commencement (SSC), this phase is characterized by a Dst increase of 20 to 50 nT over tens of minutes.",
+      Main: "The storm enters its main phase when Dst drops below -50 nT. This phase typically lasts 2-8 hours, with Dst reaching between -50 and -600 nT.",
+      Recovery: "During this phase, Dst gradually returns to its quiet time value. Recovery can last anywhere from 8 hours to 7 days."
     },
-    moon: {
-      description: "The Sun releases a constant flow of charged particles (solar wind) that interacts with the Moon's surface. Unlike Earth, the Moon has no protective magnetic field or atmosphere, making it more susceptible to these particles.",
-      effects: {
-        ChemicalReactions: "Solar wind breaks bonds in oxygen atoms in lunar rocks, allowing them to combine with hydrogen from the solar wind to form hydroxyl (OH) molecules.",
-        StaticElectricity: "Solar wind interaction generates static electricity, posing challenges for astronauts and equipment on the Moon.",
-        SoilActivation: "Geomagnetic storms may activate lunar soil, releasing trapped gases and impacting future resource utilization."
-      },
-      may2024Storm: {
-        Summary: "The geomagnetic storm in May 2024 had significant impacts on radiation levels for future lunar missions.",
-        RadiationExposure: "Radiation levels increased during the storm, posing potential risks to upcoming lunar missions.",
-        EffectsOnRegolith: "Research suggests solar storms can electrically charge lunar regolith, complicating future exploration."
-      }
+    classification: {
+      Moderate: "-50 nT > minimum of Dst > -100 nT",
+      Intense: "-100 nT > minimum Dst > -250 nT",
+      Superstorm: "minimum of Dst < -250 nT"
     },
-    mars: {
-      description: "NASA's MAVEN mission provides insights into the effects of solar storms on Mars' atmosphere, contributing to its ongoing erosion.",
-      effects: {
-        ErosionRates: "Mars loses about 100 grams of gas per second during typical conditions, which increases significantly during geomagnetic storms.",
-        HabitabilityImpact: "Geomagnetic storms likely played a role in Mars losing its ability to retain water and impacting its potential for life.",
-        IonEscape: "Solar wind accelerates ions in the atmosphere, causing them to escape into space from specific areas like polar plumes."
+    solarActivity: {
+      description: "Solar activity is driven by the sun's magnetic fields, which are generated by electrical currents acting as a magnetic dynamo inside the sun. The turbulent nature of these gases causes the magnetic fields to twist, tangle, and reorganize, leading to solar flares and coronal mass ejections.",
+      solarFlares: {
+        description: "Solar flares are large explosions from the surface of the sun that emit intense bursts of electromagnetic radiation. They are classified based on their intensity, with X-class being the most powerful, followed by M-, C-, and B-class.",
+        classification: "The NOAA categorizes solar flares into five groups based on their X-ray emission intensity. Each class letter represents a ten-fold increase in energy output. Within each class, a linear scale from 1 to 9 provides further detail.",
+        effects: {
+          "X-Class": "X-class flares can trigger planet-wide radio blackouts and long-lasting radiation storms.",
+          "M-Class": "M-class flares can cause brief radio blackouts in polar regions and minor radiation storms.",
+          "C-Class": "C-class flares have few noticeable consequences on Earth."
+        }
       },
-      may2024Storm: {
-        summary: "In May 2024, a solar storm hit Mars, with significant radiation levels and visible auroras.",
-        RadiationLevels: "Curiosity recorded a peak radiation level of 8,100 micrograys, equivalent to about 30 chest X-rays.",
-        Auroras: "Widespread auroras spanned the entire Martian atmosphere due to the lack of a global magnetic field.",
-        TechnologicalDisruptions: "Mars Odyssey and Curiosity experienced temporary disruptions, including visual distortions and solar panel degradation."
-      }
+      solarCycle: "Solar activity follows an approximately 11-year cycle. We are currently in solar cycle 25, with solar activity increasing and solar maximum expected around July 2025."
+    },
+    effects: {
+      SolarFlares: "Sudden, intense bursts of radiation from the Sun's surface that can cause radio blackouts and GPS disruptions on Earth.",
+      CoronalMassEjections: "Large expulsions of plasma and magnetic field from the Sun's corona that can trigger geomagnetic storms on Earth and other planets.",
+      SolarWind: "A stream of charged particles continuously flowing from the Sun, interacting with planetary magnetospheres and atmospheres.",
+      RadioBlackouts: "Solar flares can cause radio blackouts, primarily affecting High Frequency (HF) communications. The increased electron density in the ionosphere causes radio waves to lose energy.",
+      SatelliteDamage: "High-energy particles from solar flares can damage satellites, potentially disrupting communication and GPS satellites.",
+      AstronautSafety: "Solar storms pose risks to astronauts due to increased radiation exposure. During intense solar activity, astronauts on the ISS must take shelter to avoid exposure."
+    },
+    may2024Storm: {
+      Summary: "In May 2024, the Sun produced an X12-class solar flare and a significant coronal mass ejection, leading to a G5-class geomagnetic storm, the most severe level. This was the strongest solar event since 2003.",
+      FlareIntensity: "The X12-class flare was one of the most powerful recorded in recent years, causing immediate radio blackouts on Earth's dayside.",
+      CMESpeed: "The associated coronal mass ejection traveled at an unusually high speed of approximately 2,500 km/s, reaching Earth in under 24 hours.",
+      SolarWindEnhancement: "Solar wind speed and density were dramatically increased for several days following the event, amplifying its effects on planets and moons.",
+      GlobalImpact: "The storm affected Earth, the Moon, and Mars, causing various disruptions and providing valuable data for future space exploration.",
+      SatelliteEffects: "The storm resulted in a rapid altitude decline for thousands of satellites in low Earth orbit, dropping at a rate of 590 feet (180 meters) per day.",
+      CollisionRisks: "Many satellites fired their thrusters simultaneously to regain altitude, creating potential collision risks as tracking systems struggled to adapt to the swift changes in their paths."
     }
-  };
-  
+  },
+  earth: {
+    description: "Earth is protected by a strong magnetic field, which shields the planet from the harmful effects of solar wind and geomagnetic storms. However, during intense geomagnetic storms, Earth's magnetosphere can be temporarily disturbed, leading to auroras and disruptions to satellites and power grids.",
+    effects: {
+      Auroras: "Geomagnetic storms can generate bright auroras near the poles by funneling charged particles along Earth's magnetic field lines, causing them to collide with atmospheric gases. During intense storms, auroras can be visible at lower latitudes.",
+      SatelliteDisruptions: "Geomagnetic storms can interfere with satellite operations, impacting communication systems, GPS accuracy, and weather forecasting. The increased atmospheric drag can lower satellite orbits, potentially leading to early re-entry.",
+      PowerGridFailures: "Large geomagnetic storms can induce electric currents in power grids, potentially causing widespread outages and damage to electrical infrastructure. A notable incident occurred in 1989 when a geomagnetic storm caused a blackout in Quebec.",
+      CommunicationNavigation: "Disruption of radio signals, particularly in the high-frequency band, can affect public and amateur radio communications. GPS systems may experience time delays and inaccuracies due to ionospheric disturbances, leading to navigation errors for air and sea transport.",
+      MilitarySystems: "Geomagnetic storms can compromise military detection systems, necessitating the use of backup systems and maintenance alerts."
+    },
+    may2024Storm: {
+      Summary: "In May 2024, Earth experienced a powerful G5-class geomagnetic storm caused by an X12-class solar flare and a coronal mass ejection. This was the strongest geomagnetic storm in over two decades.",
+      Auroras: "Vibrant auroras were visible at unusually low latitudes, including the southern United States and parts of Europe, providing stunning light displays far from the poles. This was one of the most remarkable auroral displays in recent history.",
+      SatelliteIssues: "Thousands of satellites in low Earth orbit experienced rapid altitude loss, dropping at a rate of 590 feet (180 meters) per day. Many had to fire thrusters simultaneously to regain height, raising concerns about potential collisions as tracking systems struggled to adapt.",
+      CommunicationDisruptions: "Ground-based radio communications, particularly in the high-frequency band, were disrupted due to increased ionospheric density. Some satellites, including the GOES-16 weather satellite, experienced temporary data transmission losses.",
+      PowerGridRisks: "Power companies, especially in Canada, were on high alert due to the potential for grid disruptions. While no major blackouts occurred, precautionary measures were taken, such as those implemented by Transpower in New Zealand.",
+      NavigationImpacts: "GPS systems showed slight inaccuracies during the peak of the storm, affecting precision navigation and timing services.",
+      AtmosphericEffects: "The storm caused rapid heating and expansion of Earth's upper atmosphere, increasing drag on satellites and space debris in low Earth orbit."
+    }
+  },
+  moon: {
+    description: "The Moon lacks a protective magnetic field or atmosphere, making it directly exposed to solar wind and geomagnetic storms. This exposure leads to unique interactions between solar particles and the lunar surface, creating both challenges and opportunities for future lunar exploration.",
+    effects: {
+      ChemicalReactions: "Solar wind breaks bonds in oxygen atoms in lunar rocks, allowing them to combine with hydrogen from the solar wind to form hydroxyl (OH) molecules. This process is crucial for understanding potential water sources on the Moon.",
+      StaticElectricity: "Solar wind interaction generates static electricity on the lunar surface, posing challenges for astronauts and equipment. This effect is more pronounced in permanently shadowed regions where discharging is more difficult.",
+      SoilActivation: "Geomagnetic storms may activate lunar soil, particularly at the poles, potentially releasing trapped gases and impacting future resource utilization strategies.",
+      LunarSwirls: "Formation of distinctive geological features called 'lunar swirls' in areas with localized magnetic fields, where solar radiation has a reduced effect.",
+      RadiationExposure: "The Moon's lack of protection makes it vulnerable to increased radiation during solar storms, posing risks to future lunar missions and necessitating careful planning for astronaut safety.",
+      ResourceIdentification: "Understanding these processes aids in identifying potential water sources and other resources crucial for sustainable lunar exploration and habitation."
+    },
+    may2024Storm: {
+      Summary: "The geomagnetic storm in May 2024 had significant impacts on radiation levels and lunar surface conditions, providing valuable data for future lunar missions.",
+      RadiationExposure: "Elevated radiation levels were recorded, posing potential risks to upcoming lunar missions and highlighting the need for robust radiation protection strategies for astronauts.",
+      EffectsOnRegolith: "Research indicated that the storm caused electrostatic charging of lunar regolith, particularly in permanently shadowed areas. This effect could complicate future lunar missions by impacting equipment and habitats.",
+      DataCollection: "NASA's BioSentinel mission gathered important data on radiation exposure in deep space during the storm. Initial findings suggested moderate increases in hazardous solar particles in deep space, despite the storm's extreme classification on Earth.",
+      MissionPlanning: "The event provided crucial insights for planning future lunar missions, especially regarding radiation protection strategies and the behavior of lunar regolith during intense solar events.",
+      ResourceImplications: "The storm's effects on lunar soil activation and potential gas release offered new data on resource availability and utilization challenges for future lunar bases."
+    }
+  },
+  mars: {
+    description: "Mars lacks a global magnetic field, making it more susceptible to the effects of solar storms. NASA's MAVEN (Mars Atmosphere and Volatile Evolution) mission provides crucial insights into the interaction between solar activity and the Martian atmosphere, revealing ongoing atmospheric erosion processes.",
+    effects: {
+      AtmosphericLoss: "Mars currently loses about 100 grams of atmospheric gas per second due to solar wind interaction. This rate increases significantly during geomagnetic storms.",
+      HabitabilityImpact: "Geomagnetic storms and intense solar activity over billions of years have played a crucial role in Mars losing its ability to retain water, significantly impacting its potential for sustaining life.",
+      IonEscape: "Solar wind accelerates ions in the Martian atmosphere, causing them to escape into space from specific areas like polar plumes. This process is a key mechanism of atmospheric erosion.",
+      ClimaticTransformation: "The cumulative effect of atmospheric loss due to solar activity has transformed Mars from a potentially warm and wet environment into the cold, dry landscape observed today.",
+      RadiationExposure: "The thin Martian atmosphere provides little protection against solar and cosmic radiation, posing challenges for future human exploration and colonization efforts."
+    },
+    may2024Storm: {
+      Summary: "In May 2024, a powerful solar storm hit Mars, causing significant radiation levels and visible auroras across the planet. This event provided valuable data on the Martian environment during extreme solar activity.",
+      RadiationLevels: "The Curiosity rover recorded a peak radiation level of 8,100 micrograys, equivalent to about 30 chest X-rays. This marked the highest radiation surge detected in Curiosity's 12-year operational history on Mars.",
+      Auroras: "Widespread auroras spanned the entire Martian atmosphere, unlike Earth's localized auroras. This global effect is due to Mars' lack of a protective global magnetic field.",
+      TechnologicalDisruptions: "Mars Odyssey experienced a brief blackout and significant degradation of its solar panels, equivalent to a year's wear in just one day. Curiosity's cameras captured visual distortions caused by energetic particles impacting their detectors.",
+      AtmosphericEffects: "The storm likely caused an increase in the rate of atmospheric loss, providing real-time data on how such events contribute to Mars' long-term climate evolution.",
+      ScientificInsights: "The event offered unprecedented data on how future astronauts might be affected by such storms on Mars, contributing significantly to mission planning and safety protocols for future manned missions."
+    }
+  }
+};
+
 export default stormData;

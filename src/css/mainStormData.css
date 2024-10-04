@@ -1,0 +1,68 @@
+.main-storm-data-container {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 2vw;
+    font-family: 'Public Sans', sans-serif;
+  }
+  
+  .section {
+    margin-bottom: 30px;
+  }
+  
+  .title {
+    font-size: 1.7em;
+    margin-bottom: 20px;
+    color: #343a40;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .subtitle {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #495057;
+    font-family: 'Inter', sans-serif;
+  }
+  .section h3 {
+    font-size: 1em; 
+    color: #343a40; 
+    margin: 15px 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .section p {
+    font-size: 0.8em;
+    text-align: justify;
+  }
+  
+  .section ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0.8rem;
+  }
+  
+  .section ul li {
+    font-size: 0.8em;
+    margin-bottom: 10px;
+  }
+  
+  .section ul li strong {
+    color: #007bff;
+  }
+  
+  .may-2024-storm {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    .main-storm-data-container {
+      padding: 15px;
+      font-size: 2vh;
+    }
+  }
+  

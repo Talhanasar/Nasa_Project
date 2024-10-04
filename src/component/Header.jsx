@@ -6,10 +6,10 @@ import { useLenis } from 'lenis/react';
 import '../css/header.css';
 
 const Header = ({ isLandingPage }) => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isEventsDropdownOpen, setEventsDropdownOpen] = useState(false);
   const [isPlaygroundDropdownOpen, setPlaygroundDropdownOpen] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
   const lenis = useLenis();
 
@@ -61,7 +61,8 @@ const Header = ({ isLandingPage }) => {
       <div className="logo">
         <img src="/images/logo.png" alt="Logo" />
       </div>
-      <HamburgerMenu handleLinkClick={handleLinkClick} handleScrollOnClick={handleScrollOnClick} />
+      <HamburgerMenu handleLinkClick={handleLinkClick} handleScrollOnClick={handleScrollOnClick}
+      navigate={navigate} />
       <ul className="pc-menu">
         <li onClick={() => handleScrollOnClick('/')}>
           <NavLink to="/">Home</NavLink>
@@ -80,10 +81,11 @@ const Header = ({ isLandingPage }) => {
           />
           {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
-              <li onClick={() => handleLinkClick('page2')}>First Page</li>
-              <li onClick={() => handleLinkClick('page3')}>Conference</li>
-              <li onClick={() => handleLinkClick('page4')}>Webinar</li>
-              <li onClick={() => handleLinkClick('page5')}>Workshop</li>
+              <li onClick={() => handleLinkClick('page2')}>Geomagnetic..</li>
+              <li onClick={() => handleLinkClick('page3')}>Earth</li>
+              <li onClick={() => handleLinkClick('page4')}>Moon</li>
+              <li onClick={() => handleLinkClick('page5')}>Mars</li>
+              <li onClick={() => navigate('/stormforcast')}>Storm Forecast</li>
             </ul>
           )}
         </li>
@@ -103,6 +105,7 @@ const Header = ({ isLandingPage }) => {
             <ul className="dropdown-menu">
               <li onClick={() => handleScrollOnClick('/playground/solarsystem')}>Solar System</li>
               <li onClick={() => handleScrollOnClick('/playground/planets')}>Planets</li>
+              <li onClick={() => handleScrollOnClick('/playground/geomagneticstorm')}>Geomagnetic Storm</li>
             </ul>
           )}
         </li>
@@ -164,10 +167,11 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
           </div>
           {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
-              <li onClick={() => { toggleMenu(); handleLinkClick('page2'); }}>First Page</li>
-              <li onClick={() => { toggleMenu(); handleLinkClick('page3'); }}>Conference</li>
-              <li onClick={() => { toggleMenu(); handleLinkClick('page4'); }}>Webinar</li>
-              <li onClick={() => { toggleMenu(); handleLinkClick('page5'); }}>Workshop</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page2'); }}>Geomagnetic Storm</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page3'); }}>Earth</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page4'); }}>Moon</li>
+              <li onClick={() => { toggleMenu(); handleLinkClick('page5'); }}>Mars</li>
+              <li onClick={() => { toggleMenu(); navigate('/stormforcast'); }}>Storm Forecast</li>
             </ul>
           )}
         </li>

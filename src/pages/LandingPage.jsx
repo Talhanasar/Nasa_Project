@@ -15,15 +15,19 @@ const LandingPage = () => {
 
     const wrapTextInSpans = (text) => {
         const chars = text.split('');
-        const middleIndex = Math.floor(chars.length / 2);
         return chars.map((char, index) => (
-            <span 
-                key={index} 
-                className={index < middleIndex ? 'left' : 'right'}
-            >
+            <span key={index}>
                 {char === ' ' ? '\u00A0' : char}
             </span>
         ));
+    };
+
+    const truncateDescription = (description, wordLimit = 20) => {
+        const words = description.split(' ');
+        if (words.length > wordLimit) {
+            return words.slice(0, wordLimit).join(' ') + '...';
+        }
+        return description;
     };
 
     useEffect(() => {
@@ -64,8 +68,8 @@ const LandingPage = () => {
             const contents = document.querySelectorAll('.content');
 
             contents.forEach((content) => {
-                const spansLeft = content.querySelectorAll("h1 .left");
-                const spansRight = content.querySelectorAll("h1 .right");
+                const spansFirst = content.querySelectorAll(".heading-first span");
+                const spansSecond = content.querySelectorAll(".heading-second span");
                 const para = content.querySelector("p");
                 const btn = content.querySelector(".read-more-btn");
 
@@ -77,21 +81,18 @@ const LandingPage = () => {
                 });
 
 
-                tl.from(spansLeft, {
+                tl.from(spansFirst, {
                     opacity: 0,
                     y: 60,
                     duration: 0.8,
-                    stagger: 0.07
-                },"headings");
-                tl.from(spansRight, {
+                    stagger: 0.05
+                });
+                tl.from(spansSecond, {
                     opacity: 0,
                     y: 60,
                     duration: 0.8,
-                    stagger: {
-                        each: 0.07,
-                        from: "end"
-                    }
-                },"headings");
+                    stagger: 0.05
+                },"-=1.5");
                 tl.from(para, {
                     opacity: 0,
                     y: 50,
@@ -104,17 +105,25 @@ const LandingPage = () => {
                 }, '-=0.8');
             });
             const h1_spans = document.querySelectorAll('.section2 h1 span');
-            gsap.from(h1_spans, {
-                opacity: 0,
-                y: 60,
-                duration: 0.8,
+            const btn = document.querySelector('.section2 .read-more-btn');
+            const tl2 = gsap.timeline({
                 scrollTrigger: {
                     trigger: '.section2',
                     start: 'top 75%',
                     toggleActions: 'play none none reverse'
-                },
+                }
+            });
+            tl2.from(h1_spans, {
+                opacity: 0,
+                y: 60,
+                duration: 0.7,
                 stagger: 0.05
             });
+            tl2.from(btn, {
+                opacity: 0,
+                x: -70,
+                duration: 0.8,
+            }, '-=0.3');
         }, 500);
         return () => clearTimeout(timer);
 
@@ -137,14 +146,18 @@ const LandingPage = () => {
                 <video autoPlay muted loop src={`/video/geomagnetic.mp4`} />
                 <div className="headings">
                     <h1>{wrapTextInSpans('Geomagnetic')}</h1>
-                    <h1>{wrapTextInSpans('Storms')}</h1>
+                    <h1>{wrapTextInSpans('Storm')}</h1>
+                    <NavLink to={"/geomagnetic-storms/main"}>
+                        <button className="read-more-btn">Read more</button>
+                    </NavLink>
                 </div>
             </section>
             <section id='page3' className="sections section3">
                 <video autoPlay muted loop src={`/video/earth.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Geomagnetic Storm on Earth')}</h1>
-                    <p>{stormData.earth.description}</p>
+                    <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm ')}</h1>
+                    <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Earth')}</h1>
+                    <p>{truncateDescription(stormData.earth.description)}</p>
                     <NavLink to={"/geomagnetic-storms/earth"}>
                         <button className="read-more-btn">Read more</button>
                     </NavLink>
@@ -154,8 +167,9 @@ const LandingPage = () => {
             <section id='page4' className="sections section4">
                 <video autoPlay muted loop src={`/video/moon.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Geomagnetic Storm on Moon ')}</h1>
-                    <p>{stormData.moon.description}</p>
+                    <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm')}</h1>
+                    <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Moon')}</h1>
+                    <p>{truncateDescription(stormData.moon.description)}</p>
                     <NavLink to={"/geomagnetic-storms/moon"}>
                         <button className="read-more-btn">Read more</button>
                     </NavLink>
@@ -165,8 +179,9 @@ const LandingPage = () => {
             <section id='page5' className="sections section5">
                 <video autoPlay muted loop src={`/video/mars.mp4`} />
                 <div className="content">
-                    <h1>{wrapTextInSpans('Geomagnetic Storm on Mars ')}</h1>
-                    <p>{stormData.mars.description}</p>
+                    <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm')}</h1>
+                    <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Mars')}</h1>
+                    <p>{truncateDescription(stormData.mars.description)}</p>
                     <NavLink to={"/geomagnetic-storms/mars"}>
                         <button className="read-more-btn">Read more</button>
                     </NavLink>

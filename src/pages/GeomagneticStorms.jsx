@@ -2,12 +2,18 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import stormData from '../component/stormData'
 import '../css/geomagneticStorms.css'
+import MainStormData from '../component/MainStormData'
 
 const GeomagneticStorms = () => {
     const { planet } = useParams()
     const planetData = stormData[planet?.toLowerCase()];
-    console.log('planetData:', planetData);
-    console.log('may2024Storm:', planetData?.may2024Storm);
+    if (planet === 'main') {
+        return( 
+        <div className="main-container">
+            <MainStormData data={planetData} />
+        </div>
+    );
+    }
 
     return (
         <div className="geomagnetic-storms-container">

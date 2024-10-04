@@ -1,16 +1,17 @@
-.geomagnetic-storms-container {
-  padding: 5rem 0.8rem 2rem 0.8rem;
-  background-color: #000;
+.geomagnetic-storms-container ,
+.main-container {
+  padding: 6rem 0.8rem 2rem 0.8rem;
+  background-color: #fff;
 }
 
 .geomagnetic-storms {
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #111;
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
-  color: #fff;
+  color: #333;
   font-size: 2vw;
   font-family: "Public Sans", sans-serif;
 }
@@ -19,14 +20,14 @@
   font-size: 1.5em;
   font-weight: 700;
   text-align: center;
-  color: #fff;
+  color: #333;
   margin-bottom: 20px;
   font-family: "Inter", sans-serif;
 }
 
 .description {
   font-size: 0.7em;
-  color: #ccc;
+  color: #555;
   line-height: 1.6;
   margin-bottom: 30px;
 }
@@ -34,9 +35,9 @@
 .subtitle {
   font-size: 1em;
   font-weight: 600;
-  color: #ddd;
+  color: #444;
   margin-bottom: 15px;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid #ddd;
   padding-bottom: 8px;
   font-family: "Inter", sans-serif;
 }
@@ -51,29 +52,29 @@
 
 .effects-list li,
 .storm-details li {
-  background-color: #222;
+  background-color: #fff;
   padding: 12px;
   margin-bottom: 10px;
   border-radius: 5px;
   border-left: 4px solid #0073e6;
-  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   transition: all 0.2s;
   font-size: 0.7em;
 }
 
 .effects-list li:hover,
 .storm-details li:hover {
-  background-color: #333;
+  background-color: #f0f0f0;
 }
 
 .effects-list strong,
 .storm-details strong {
-  color: #3a9fff;
+  color: #0056b3;
 }
 
 .storm-summary {
   font-size: 0.7em;
-  color: #bbb;
+  color: #666;
   line-height: 1.6;
   margin-bottom: 30px;
   border-left: 4px solid #ff9800;
