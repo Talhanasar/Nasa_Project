@@ -198,6 +198,9 @@
     justify-content: center;
     align-items: center;
 }
+.dropdown-header.open{
+    margin-bottom: 0.6rem;
+}
 
 .dropdown-menu {
     display: block;

@@ -156,7 +156,7 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li className="dropdown" onClick={toggleEventsDropdown}>
-          <div className="dropdown-header">
+          <div className={`dropdown-header ${isEventsDropdownOpen ? 'open' : ''}`}>
             Events
             <IoIosArrowDown
               style={{
@@ -176,7 +176,7 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
           )}
         </li>
         <li className="dropdown" onClick={togglePlaygroundDropdown}>
-          <div className="dropdown-header">
+          <div className={`dropdown-header ${isPlaygroundDropdownOpen ? 'open' : ''}`}>
             Playground
             <IoIosArrowDown
               style={{
