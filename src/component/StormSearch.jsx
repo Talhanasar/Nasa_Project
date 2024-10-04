@@ -24,7 +24,7 @@ const StormSearch = () => {
         setFilteredData(data[data.length - 1]);
       } else {
         setFilteredData([]);
-        setErrorMessage(`No data available for the selected date. latest data available till ${data[data.length - 1].gstID.split('T')[0]}`);
+        setErrorMessage(`No data available for the selected date. latest data available ${data[data.length - 1].gstID.split('T')[0]} till your given date`);
       }
     } catch (error) {
       setErrorMessage(error.message);
