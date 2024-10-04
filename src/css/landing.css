@@ -126,11 +126,11 @@
 
 .read-more-btn {
   margin-top: 1.3rem;
-  width: 7rem;
+  min-width: 7rem;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 0.5rem;
-  padding: 0.6rem;
+  padding: 0.6rem 1rem;
   color: white;
   font-family: "Public Sans";
   font-size: 0.4em;
