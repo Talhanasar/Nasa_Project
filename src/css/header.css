@@ -203,37 +203,6 @@
     display: block;
     flex-direction: column;
 }
-.menu-item {
-    width: 2rem;
-    overflow: hidden;
-    padding: 10px 0;
-    cursor: pointer;
-}
-
-.marquee-container {
-    width: 100%;
-    overflow: hidden;
-}
-
-.marquee-content {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 0;
-    animation: marquee 10s linear infinite;
-}
-
-/* @keyframes marquee {
-    0% {
-        transform: translate(0, 0);
-    }
-    100% {
-        transform: translate(-100%, 0);
-    }
-} */
-
-.menu-item:hover .marquee-content {
-    animation-play-state: paused;
-}
 
 /* .dropdown-menu li {
     padding: 0.8rem 1.1rem;

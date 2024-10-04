@@ -81,33 +81,11 @@ const Header = ({ isLandingPage }) => {
           />
           {isEventsDropdownOpen && (
             <ul className="dropdown-menu">
-              {[{
-                text: 'Geomagnetic Storm',
-                action: () => handleLinkClick('page2')
-              },
-              {
-                text: 'On Perspective of Earth',
-                action: () => handleLinkClick('page3')
-              },
-              {
-                text: 'On Perspective of Moon',
-                action: () => handleLinkClick('page4')
-              },
-              {
-                text: 'On Perspective of Mars',
-                action: () => handleLinkClick('page5')
-              },
-              {
-                text: 'Storm Forecast',
-                action: () => navigate('/stormforcast')
-              }
-              ].map((item, index) => (
-                <li key={index} onClick={item.action} className="menu-item">
-                  <div className="marquee-container">
-                    <div className="marquee-content">{item.text}</div>
-                  </div>
-                </li>
-              ))}
+              <li onClick={() => handleLinkClick('page2')}>Geomagnetic Storm</li>
+              <li onClick={() => handleLinkClick('page3')}>Earth</li>
+              <li onClick={() => handleLinkClick('page4')}>Moon</li>
+              <li onClick={() => handleLinkClick('page5')}>Mars</li>
+              <li onClick={() => navigate('/stormforcast')}>Storm Forecast</li>
             </ul>
           )}
         </li>
