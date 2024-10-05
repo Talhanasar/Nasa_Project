@@ -171,7 +171,7 @@ const HamburgerMenu = ({ handleLinkClick, handleScrollOnClick }) => {
               <li onClick={() => { toggleMenu(); handleLinkClick('page3'); }}>Earth</li>
               <li onClick={() => { toggleMenu(); handleLinkClick('page4'); }}>Moon</li>
               <li onClick={() => { toggleMenu(); handleLinkClick('page5'); }}>Mars</li>
-              <li onClick={() => { toggleMenu(); navigate('/stormforcast'); }}>Storm Forecast</li>
+              <li onClick={() => { toggleMenu(); handleScrollOnClick('/stormforcast'); }}>Storm Forecast</li>
             </ul>
           )}
         </li>

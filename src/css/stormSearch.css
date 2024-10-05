@@ -1,10 +1,12 @@
   .container {
     max-width: 800px;
     margin: 0 auto;
+    font-size: 2vw;
   }
   .container h1 {
     text-align: center;
     color: #333;
+    font-size: 1.5em !important;
   }
   .container form {
     margin-bottom: 20px;
@@ -18,7 +20,7 @@
   .container button {
     padding: 10px 15px;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 0.7em;
     cursor: pointer;
     background-color: #007bff;
     color: #fff;
@@ -34,11 +36,30 @@
   .container .no-data {
     color: red;
     text-align: center;
+    font-size: 0.7em;
   }
   .container .gst-data {
     margin-bottom: 20px;
+    font-size: 0.7em;
   }
   .container .gst-data h3 {
     margin: 0 0 10px;
+    font-size: 0.9em;
+  }
+  .container .gst-data p {
+    font-size: 0.75em;
+  }
+
+  @media(width<450px){
+    .container{
+      font-size: 2vh;
+    }
+    .container h1{
+      font-size: 1.2em !important;
+    }
+    .container button {
+      padding: 0.1rem 0.4rem;
+    }
+
   }
   
