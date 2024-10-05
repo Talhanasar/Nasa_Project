@@ -19,7 +19,7 @@ const GeomagneticStorms = () => {
     return (
         <div className="geomagnetic-storms-container">
             <div className="geomagnetic-storms">
-                <h1 className="title">Geomagnetic Storm On Perspective Of {planet.toLowerCase().replace(/^\w/, c => c.toUpperCase())}</h1>
+                <h1 className="title">{planet === 'main'? "Geomagnetic Storm" : `Geomagnetic Storm On Perspective Of ${planet.toLowerCase().replace(/^\w/, c => c.toUpperCase())}`}</h1>
                 <p className="description">{planetData.description}</p>
 
                 {Object.entries(planetData).map(([key, value]) => (
