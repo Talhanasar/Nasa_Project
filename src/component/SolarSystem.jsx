@@ -34,7 +34,7 @@ const Planet = ({ planet }) => {
       {planet.name === "Saturn" && (
         <mesh rotation={[Math.PI/3, 0, 0]}>
           <ringGeometry args={[1.2, 2, 35]} />
-          <meshBasicMaterial map={useLoader(THREE.TextureLoader, "/textures/saturn_Ring.png")} side={THREE.DoubleSide} />
+          <meshBasicMaterial map={useLoader(THREE.TextureLoader, "/textures/saturn_Ring.webp")} side={THREE.DoubleSide} />
         </mesh>
       )}
       {planet.moons.map((moon, index) => (
@@ -139,7 +139,7 @@ const SolarSystem = () => {
   }
 
   return (
-    <Canvas camera={{ position: [0, 25, 230], fov: 45 }} className='solar-system-canvas'>
+    <Canvas camera={{ position: [0, 25, 230], fov: 45 }} className='solar-system-canvas' dpr={[1, 1.75]} performance={{ min: 0.5 }}>
       <Scene textures={textures} backgroundCubemap={backgroundCubemap} />
       <OrbitControls enableDamping maxDistance={140} minDistance={20} enablePan={false} />
     </Canvas>

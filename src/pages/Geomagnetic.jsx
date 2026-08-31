@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import LazyVideo from '../component/LazyVideo'
 import '../css/Geomagnetic.css'
 
 const Geomagnetic = () => {
   const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const video = document.querySelector('video')
-    video.addEventListener('loadeddata', () => {
-      setIsLoading(false)
-    })
-
-    return () => {
-      video.removeEventListener('loadeddata', () => {
-        setIsLoading(false)
-      })
-    }
-  }, [])
 
   return (
     <div className='main-geomagnetic'>
@@ -24,7 +12,11 @@ const Geomagnetic = () => {
           <p>Loading...</p>
         </div>
       )}
-      <video src="/video/geomagnetic storm.mp4" autoPlay loop muted></video>
+      <LazyVideo
+        src="/video/geomagnetic-storm.mp4"
+        poster="/video/posters/geomagnetic-storm.webp"
+        onCanPlay={() => setIsLoading(false)}
+      />
     </div>
   )
 }

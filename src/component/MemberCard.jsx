@@ -6,7 +6,7 @@ import { BiLogoGmail } from 'react-icons/bi';
 const MemberCard = ({ info, skills, img, linkedin, gmail, github, isWrapped }) => {
     return (
         <div className="card">
-            <img src={`/images/${img}`} alt="Profile Image" className="card-image" />
+            <img src={`/images/${img}`} alt="Profile Image" className="card-image" loading="lazy" decoding="async" />
             <p className="card-role">{info.role}</p>
             <h3 className="card-name">{info.name}</h3>
             <p className="card-description">Studying B.Sc. in Computer Science and Engineering.</p>

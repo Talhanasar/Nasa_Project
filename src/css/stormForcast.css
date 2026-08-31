@@ -4,7 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: url('/images/GeomagneticStorm-bg.png');
+    background: url('/images/GeomagneticStorm-bg.webp');
 }
 .search-container{
     display: flex;

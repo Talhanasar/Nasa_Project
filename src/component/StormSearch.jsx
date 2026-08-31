@@ -7,7 +7,8 @@ const StormSearch = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const API_KEY = 'JUdwVrz0c8uDNrcEc2buNas853b92YMkrOZq7gQ1'; // NASA API key
+  // Key comes from .env (see .env.example); falls back to NASA's rate-limited DEMO_KEY.
+  const API_KEY = import.meta.env.VITE_NASA_API_KEY || 'DEMO_KEY';
 
   const fetchGSTData = async (startDate) => {
     try {

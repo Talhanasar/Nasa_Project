@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import { useLenis } from 'lenis/react';
 import "../css/landing.css";
+import LazyVideo from '../component/LazyVideo';
 
 const LandingPage = () => {
     gsap.registerPlugin(ScrollTrigger);
@@ -124,17 +125,15 @@ const LandingPage = () => {
         <>
             <section id='start' className="section1" ref={videoRef}>
                 {isVideoLoading && <div className="loader"></div>}
-                <video
-                    loop
-                    autoPlay
-                    muted
+                <LazyVideo
                     onCanPlay={handleVideoLoaded}
-                    src={`/video/final.mp4`}
+                    poster="/video/posters/final.webp"
+                    src="/video/final.mp4"
                 />
             </section>
 
             <section id='page2' className="sections section2">
-                <video autoPlay muted loop src={`/video/geomagnetic.mp4`} />
+                <LazyVideo poster="/video/posters/geomagnetic.webp" src="/video/geomagnetic.mp4" />
                 <div className="headings">
                     <h1>{wrapTextInSpans('Geomagnetic')}</h1>
                     <h1>{wrapTextInSpans('Storm')}</h1>
@@ -144,7 +143,7 @@ const LandingPage = () => {
                 </div>
             </section>
             <section id='page3' className="sections section3">
-                <video autoPlay muted loop src={`/video/earth.mp4`} />
+                <LazyVideo poster="/video/posters/earth.webp" src="/video/earth.mp4" />
                 <div className="content">
                     <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm ')}</h1>
                     <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Earth')}</h1>
@@ -156,7 +155,7 @@ const LandingPage = () => {
             </section>
 
             <section id='page4' className="sections section4">
-                <video autoPlay muted loop src={`/video/moon.mp4`} />
+                <LazyVideo poster="/video/posters/moon.webp" src="/video/moon.mp4" />
                 <div className="content">
                     <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm')}</h1>
                     <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Moon')}</h1>
@@ -168,7 +167,7 @@ const LandingPage = () => {
             </section>
 
             <section id='page5' className="sections section5">
-                <video autoPlay muted loop src={`/video/mars.mp4`} />
+                <LazyVideo poster="/video/posters/mars.webp" src="/video/mars.mp4" />
                 <div className="content">
                     <h1 className='heading-first'>{wrapTextInSpans('Geomagnetic Storm')}</h1>
                     <h1 className='heading-second'>{wrapTextInSpans('On Perspective of Mars')}</h1>
