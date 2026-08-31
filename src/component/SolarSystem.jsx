@@ -141,7 +141,7 @@ const SolarSystem = () => {
   return (
     <Canvas camera={{ position: [0, 25, 230], fov: 45 }} className='solar-system-canvas' dpr={[1, 1.75]} performance={{ min: 0.5 }}>
       <Scene textures={textures} backgroundCubemap={backgroundCubemap} />
-      <OrbitControls enableDamping maxDistance={140} minDistance={20} enablePan={false} />
+      <OrbitControls enableDamping maxDistance={140} minDistance={20} enablePan={false} enableZoom={false} />
     </Canvas>
   );
 };

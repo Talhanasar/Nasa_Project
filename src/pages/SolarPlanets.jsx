@@ -1,35 +1,12 @@
-import React, { Suspense, lazy, useEffect, useRef } from 'react';
+import React, { Suspense, lazy } from 'react';
 import '../css/solar-planets.css';
 
 const SolarSystem = lazy(() => import('../component/SolarSystem'));
 
 const SolarPlanets = () => {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('wheel', handleScroll, { passive: false });
-    }
-
-    return () => {
-      if (container) {
-        container.removeEventListener('wheel', handleScroll);
-      }
-    };
-  }, []);
-
   return (
     <section className='main'>
-      <div
-        className='solar-system-container'
-        ref={containerRef}
-      >
+      <div className='solar-system-container'>
         <h1 className='title'>3D Model</h1>
         <Suspense fallback={<div className='suspense-fallback'>Loading...</div>}>
           <SolarSystem />
